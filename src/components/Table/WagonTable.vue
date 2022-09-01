@@ -1,7 +1,7 @@
 <template>
 <div>
-<button @click="limits(param)">Фильтрация по числу</button>
-<input v-model="name" @input="getName" type="number">
+<!-- <button @click="limits(param)">Фильтрация по числу</button> -->
+<input v-model="name" @input="getName" @keyup.enter="limits(param)" type="number" placeholder="Количество">
 
     <div id="tableMain">
                     <table border="1" id="info-table">
