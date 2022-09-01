@@ -24,10 +24,10 @@ import axios from 'axios'
                 
             }
         },
-        async mounted(){
+         mounted(){
             axios
-            let res = await fetch('https://jsonplaceholder.typicode.com/comments?_limit=10')
-            let posts = await res.json()
+            let res =  fetch('https://jsonplaceholder.typicode.com/comments?_limit=10')
+            let posts =  res.json()
             this.posts = posts
 
         }

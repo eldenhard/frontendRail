@@ -7,7 +7,7 @@
                 <div @click="newTab('Dislocation')">  
                   <img src="@/assets/map.png" class="image">
                 </div>
-                <b-dropdown id="dropdown-1" text="Дислокация" class="m-md-2">
+                <b-dropdown text="Дислокация">
                     <b-dropdown-item @click="newTab('Dislocation')">дислокация 1</b-dropdown-item>
                 </b-dropdown>
               </li>
@@ -15,9 +15,8 @@
               <li class="navbarList" >   
                 <div @click="newTab('Flight')">  
                   <img src="@/assets/flight.png" class="image">
-                  <!-- <p class="navbarDescription">Рейсы▾</p> -->
                 </div>
-                <b-dropdown id="dropdown-1" text="Рейсы" class="m-md-2">
+                <b-dropdown text="Рейсы">
                     <b-dropdown-item @click="newTab('Flight')">Рейсы 1</b-dropdown-item>
                 </b-dropdown>
               </li>
@@ -26,7 +25,7 @@
                 <div @click="newTab('Wagon')">
                   <img src="@/assets/wagon.png" class="image">
                 </div> 
-                <b-dropdown id="dropdown-1" text="Вагоны" class="m-md-2">
+                <b-dropdown  text="Вагоны" >
                     <b-dropdown-item @click="newTab('Wagon')">Вагоны 1</b-dropdown-item>
                 </b-dropdown>
               </li>
@@ -35,7 +34,7 @@
                 <div @click="newTab('Report')">   
                   <img src="@/assets/report.png" class="image">
                 </div>
-                <b-dropdown id="dropdown-1" text="Отчеты" class="m-md-2">
+                <b-dropdown text="Отчеты">
                   <b-dropdown-item @click="newTab('Report')">Отчеты 1</b-dropdown-item>
                 </b-dropdown>
               </li>
@@ -59,7 +58,7 @@
 
     export default{
         name: 'Navbar',
-        props: ["tabs", 'tabCounter'],
+        props: ['tabs', 'tabCounter'],
         methods:{
           newTab(tabname) {
             this.tabs.push({'id': this.tabCounter++,
@@ -79,7 +78,6 @@
 
  <style scoped>
 
- 
 select{
   width: 100%;
   box-sizing: border-box;

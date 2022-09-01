@@ -1,46 +1,6 @@
 <template>
   <div>
-    <div id="navbarMain">
-          <ul class="navbarul">
-              <li class="navbarList"> 
-                <div @click="newTab('Dislocation')">  
-                  <img src="@/assets/map.png" class="image">
-                </div>
-                <b-dropdown id="dropdown-1" text="Дислокация" class="m-md-2">
-                    <b-dropdown-item @click="newTab('Dislocation')">дислокация 1</b-dropdown-item>
-                </b-dropdown>
-              </li>
-
-              <li class="navbarList" >   
-                <div @click="newTab('Flight')">  
-                  <img src="@/assets/flight.png" class="image">
-                  <!-- <p class="navbarDescription">Рейсы▾</p> -->
-                </div>
-                <b-dropdown id="dropdown-1" text="Рейсы" class="m-md-2">
-                    <b-dropdown-item @click="newTab('Flight')">Рейсы 1</b-dropdown-item>
-                </b-dropdown>
-              </li>
-
-              <li class="navbarList">  
-                <div @click="newTab('Wagon')">
-                  <img src="@/assets/wagon.png" class="image">
-                </div> 
-                <b-dropdown id="dropdown-1" text="Вагоны" class="m-md-2">
-                    <b-dropdown-item @click="newTab('Wagon')">Вагоны 1</b-dropdown-item>
-                </b-dropdown>
-              </li>
-
-              <li class="navbarList" >  
-                <div @click="newTab('Report')">   
-                  <img src="@/assets/report.png" class="image">
-                </div>
-                <b-dropdown id="dropdown-1" text="Отчеты" class="m-md-2">
-                  <b-dropdown-item @click="newTab('Report')">Отчеты 1</b-dropdown-item>
-                </b-dropdown>
-              </li>
-        </ul>
-    </div>
-
+    <WagonNavbar :tabs="tabs" :tabCounter="tabCounter"></WagonNavbar>
 
                 <div>
                   <b-card no-body class="leftTable">
@@ -52,7 +12,8 @@
                           </template>
                           <b-card-text>
                               {{i.name}}
-                              <WagonTable v-if="visible"></WagonTable>
+
+                              <WagonTable></WagonTable>
                               <FlightTable></FlightTable>
                           </b-card-text>
                       </b-tab>
@@ -67,16 +28,16 @@
 </template>
 
 <script>
+import WagonNavbar from './Navbar/WagonNavbar.vue'
 import WagonTable from './Table/WagonTable.vue'
 import FlightTable from './Table/FlightTable.vue'
 export default{
     name: 'WagonPark',
-    components:{WagonTable, FlightTable},
+    components:{WagonTable, FlightTable, WagonNavbar},
     data() {  
       return {
         tabs: [],
-        tabCounter: 0,
-        visible: false
+        tabCounter: 0
       }
     },
     methods:{
