@@ -22,6 +22,9 @@
                             <div v-if="i.name==='Вагоны'"> 
                                 <WagonTable/>
                             </div>
+                            <div v-if="i.name === 'Дислокация'">
+                               <DislocationTable/>
+                            </div>
                         
                         </b-card-text>
                     </b-tab>
@@ -36,11 +39,12 @@
   import WagonNavbar from './Navbar/WagonNavbar.vue'
   import WagonTable from './Table/WagonTable.vue'
   import FlightTable from './Table/FlightTable.vue'
+  import DislocationTable from './Table/DislocationTable.vue'
 
   
 export default{
     name: 'WagonPark',
-    components:{WagonTable, FlightTable, WagonNavbar},
+    components:{WagonTable, FlightTable, WagonNavbar, DislocationTable},
     data() {
         return {
             tabs: [],
@@ -56,9 +60,6 @@ export default{
             }
             localStorage.clear()
         },
-    mounted() {
-            this.checked = JSON.parse(localStorage.getItem("tabs")) || []
-            }
   
     }   
 }

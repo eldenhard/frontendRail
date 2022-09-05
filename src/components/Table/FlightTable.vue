@@ -15,6 +15,8 @@
 
 
 <script>
+    import Wagon from '@/mixins/Wagon'
+
     export default{
         name: 'WagonTable',
         data(){
@@ -23,10 +25,8 @@
                 name: ''
             }
         },
+mixins:[Wagon],
         methods:{
-          getName: function(){
-            this.param = this.name
-          },
           limits: async function(let1=''){
                   let ans = ('https://jsonplaceholder.typicode.com/comments?' + `_limit=${let1}`)
                   let res = await fetch(ans)
