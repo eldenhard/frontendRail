@@ -10,28 +10,24 @@
                     <b-tab v-for="i in tabs" :key="i.id" >
   
                         <template #title>
-                            <span>Таблица {{i}}</span>
+                            <span>Таблица {{i.id}}</span>
                             <span @click="closeTab(i.id)">&nbsp;&nbsp;❌</span>
                         </template>
   
                         <b-card-text>
                             {{i.name}}
-                            <div v-if="i.name==='Flight'"> <!-- added -->
+                            <div v-if="i.name==='Рейсы'"> 
                                 <FlightTable/>
                             </div>
-                            <div v-if="i.name==='Wagon'"> <!-- added -->
+                            <div v-if="i.name==='Вагоны'"> 
                                 <WagonTable/>
                             </div>
+                        
                         </b-card-text>
-  
                     </b-tab>
                 </b-tabs>
             </b-card>
         </div>
-  
-  
-  
-  
     </div>
   
   </template>
@@ -40,15 +36,15 @@
   import WagonNavbar from './Navbar/WagonNavbar.vue'
   import WagonTable from './Table/WagonTable.vue'
   import FlightTable from './Table/FlightTable.vue'
+
   
-  
-  export default{
+export default{
     name: 'WagonPark',
     components:{WagonTable, FlightTable, WagonNavbar},
     data() {
         return {
             tabs: [],
-            counter: 0,
+            counter: 1,
         }
     },
     methods:{
@@ -58,10 +54,15 @@
                     this.tabs.splice(i, 1)
                 }
             }
-        }
-    },
+            localStorage.clear()
+        },
+    mounted() {
+            this.checked = JSON.parse(localStorage.getItem("tabs")) || []
+            }
   
-  }
+    }   
+}
+  
   
   
   
@@ -69,52 +70,50 @@
   
   
   <style>
-  .infoNull{
+.infoNull{
     text-align: center;
     padding-top: 1%;
     font-weight: bold;
   }
-  select{
+select{
     width: 100%;
     box-sizing: border-box;
   }
-  
-    #navbarMain{
+#navbarMain{
     background: #CECECE;
     display: block;
     height: 120px;
   }
-  .navbarList li > a {
+.navbarList li > a {
     display: block;
     text-decoration: none;
   }
-  .navbarul{
+.navbarul{
       padding-top: 8px;
       margin-left: 0.5%;
   }
-  ul.navbarul li{
+ul.navbarul li{
       display: inline-block;
   }
-  .navbarList{
+.navbarList{
   display: block;
   margin-left: 2px;
   list-style: none;
   text-align: center;
-  
   padding: 7px 10px;
   border: 1px solid #ECECEC;
   background: #ECECEC;
   cursor: pointer;
   height: 100px;
   }
-  .navbarList:hover{
+.navbarList:hover{
       border: 1px solid #9D9D9D;
   }
-  .image{
+.image{
       width: 40px;
       margin-top: 5px;
   }
-  .navbarDescription{
+.navbarDescription{
       color: #000000;
       font-size: 400;
       font-size: 12px;
@@ -124,12 +123,3 @@
      text-align: left;
   }
   </style>
-  
-  
-  
-  
-  
-  
-  
-  
-  

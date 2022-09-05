@@ -4,42 +4,45 @@
         <div id="navbarMain">
             <ul class="navbarul">
                 <li class="navbarList">
-                    <div @click="newTab('Dislocation')">
+                    <div @click="newTab('Дислокация')">
                         <img src="@/assets/map.png" class="image">
                     </div>
                     <b-dropdown text="Дислокация">
-                        <b-dropdown-item @click="newTab('Dislocation')">дислокация 1</b-dropdown-item>
+                        <b-dropdown-item @click="newTab('Дислокация-таблица')">дислокация 1</b-dropdown-item>
                     </b-dropdown>
                 </li>
   
                 <li class="navbarList" >
-                    <div @click="newTab('Flight')">
+                    <div @click="newTab('Рейсы')">
                         <img src="@/assets/flight.png" class="image">
                     </div>
                     <b-dropdown text="Рейсы">
-                        <b-dropdown-item @click="newTab('Flight')">Рейсы 1</b-dropdown-item>
+                        <b-dropdown-item @click="newTab('Рейсы-таблица')">Рейсы 1</b-dropdown-item>
                     </b-dropdown>
                 </li>
   
                 <li class="navbarList">
-                    <div @click="newTab('Wagon')">
+                    <div @click="newTab('Вагоны')">
                         <img src="@/assets/wagon.png" class="image">
                     </div>
                     <b-dropdown  text="Вагоны" >
-                        <b-dropdown-item @click="newTab('Wagon')">Вагоны 1</b-dropdown-item>
+                        <b-dropdown-item @click="newTab('Вагоны-таблица')">Вагоны 1</b-dropdown-item>
                     </b-dropdown>
                 </li>
   
                 <li class="navbarList" >
-                    <div @click="newTab('Report')">
+                    <div @click="newTab('Отчеты')">
                         <img src="@/assets/report.png" class="image">
                     </div>
                     <b-dropdown text="Отчеты">
-                        <b-dropdown-item @click="newTab('Report')">Отчеты 1</b-dropdown-item>
+                        <b-dropdown-item @click="newTab('Отчеты-таблица')">Отчеты 1</b-dropdown-item>
                     </b-dropdown>
                 </li>
             </ul>
         </div>
+
+
+
     </div>
   
   
@@ -48,9 +51,7 @@
   </template>
   
   <script>
-  // import Wagon from '';
-  
-  export default{
+export default{
     name: 'Navbar',
     props: ['tabs', 'counter'],
     data: function(){
@@ -62,8 +63,9 @@
         newTab(tabname) {
             this.tabs.push({'name': tabname, 'id': this.inner_counter++ })
         }
-  
-    }}
+    }
+   
+}
   
   
   </script>
@@ -80,131 +82,45 @@
   
   
   
-   <style scoped>
-  
-  select{
+<style scoped>
+select{
     width: 100%;
     box-sizing: border-box;
   }
-  
-    #navbarMain{
+#navbarMain{
     background: #CECECE;
     display: block;
     height: 120px;
   }
-  .navbarList li > a {
+.navbarList li > a {
     display: block;
     text-decoration: none;
   }
-  .navbarul{
+.navbarul{
       padding-top: 8px;
-      margin-left: 0.5%;
+      /* margin-left: 10%; */
   }
-  ul.navbarul li{
+ul.navbarul li{
       display: inline-block;
   }
-  .navbarList{
+.navbarList{
   display: block;
   margin-left: 2px;
   list-style: none;
   text-align: center;
-  
   padding: 7px 10px;
   border: 1px solid #ECECEC;
   background: #ECECEC;
   cursor: pointer;
   height: 100px;
+  min-width: 150px;
   }
-  .navbarList:hover{
+.navbarList:hover{
       border: 1px solid #9D9D9D;
   }
-  .image{
+.image{
       width: 40px;
       margin-top: 5px;
-  }
-  .navbarDescription{
-      color: #000000;
-      font-size: 400;
-      font-size: 12px;
-      /* padding-top: 6px; */
-      margin-bottom: 0;
-      bottom: 0;
-     text-align: left;
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  .button{
-      color: white;
-      border: none;
-      outline: none;
-      width: 130px;
-      height: 25px;
-      letter-spacing: 1px;
-      border-radius: 7px;
-      font-weight: 500;
-      font-size: 13px;
-  }
-  .Delete{
-      background: #ED5E68;
-  }
-  .Delete:hover{
-      background: #c04850;
-      cursor: pointer;
-  }
-  .Request{
-      background: #2196F3;
-  }
-  .Request:hover{
-      background: #1a70b6;
-      cursor: pointer;
-  }
-  .Accept{
-      background: #45AC53;
-  }
-  .Accept:hover{
-      background: #2e7a38;
-      cursor: pointer;
-  }
-  .Action{
-      background: #ed925e;
-  }
-  .Action:hover{
-      background: #c27549;
-      cursor: pointer;
-  }
-  .Cancel{
-      background: #8388A4;
-  }
-  .Cancel:hover{
-      background: #63677c;
-      cursor: pointer;
-  }
-  
-  
-  
+  }  
   </style>
   

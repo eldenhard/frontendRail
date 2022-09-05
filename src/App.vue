@@ -21,6 +21,8 @@ export default {
 
 
 <style>
+@import './style/style.css';
+
 div{
   min-width: 100%;
   margin: 0 !important;

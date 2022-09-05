@@ -15,15 +15,12 @@
 
 
 <script>
-import axios from 'axios'
-
-
     export default{
         name: 'WagonTable',
         data(){
             return{
                 posts: [],
-              name: ''
+                name: ''
             }
         },
         methods:{
@@ -36,7 +33,8 @@ import axios from 'axios'
                   const posts = await res.json()
                   this.posts = posts
               }
-       }
+       },
+
 }
 
 

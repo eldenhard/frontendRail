@@ -3,8 +3,8 @@
       <!-- <button @click="limits(param)">Фильтрация по числу</button> -->
     <input v-model="name" @input="getName" @keyup.enter="limits(param)" type="number" placeholder="Количество">
     
-        <div id="tableMain">
-                        <table border="1" id="info-table">
+        <div id="tableMain" v-bind:value="posts">
+                        <table border="1" id="info-table" >
                         <tr>
                             <th  v-for="post in posts" :key="post.title">{{post.title}}</th>
                         </tr>
@@ -16,66 +16,72 @@
                         </tr>
                         </table>
         </div>
+
+
+<br>
+  <button class="button Accept" @click="saveChange">Сохранить</button>
     </div>
     </template>
     
     
     
-    <script>
-    import axios from 'axios'
-    
-    
-        export default{
-            name: 'WagonTable',
-            data(){
-                return{
-                    posts: [],
-                    name: ''
-    
-                }
-            },
-            methods:{
-                getName: function(){
-                    this.param = this.name
-    
-                },
-                limits: async function(let1=''){
-                    let ans = ('https://jsonplaceholder.typicode.com/posts?' + `_limit=${let1}`)
-                    let res = await fetch(ans)
-                    const posts = await res.json()
-                    this.posts = posts
-                }
-            // },
-            // async mounted(){
-            //     axios
-            //     let res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=45')
-            //     let posts = await res.json()
-            //     this.posts = posts
-    
-            }
-    
+<script>
+
+export default{
+    name: 'WagonTable',
+    data(){
+        return{
+            posts: [],
+            name: '',
         }
+    },
+    methods:{
+        getName: function(){
+            this.param = this.name
+        },
+        limits: async function(let1=''){
+            let ans = ('https://jsonplaceholder.typicode.com/posts?' + `_limit=${let1}`)
+            let res = await fetch(ans)
+            const posts = await res.json()
+            this.posts = posts
+            
+        }   ,
+        saveChange() {
+            const parsed = JSON.stringify(this.posts)
+            localStorage.setItem('posts', parsed)
+            // localStorage.posts = this.posts
+            localStorage.name = this.name;
+    }
+    },
+    mounted() {
+    if (localStorage.name) {
+      this.name = localStorage.name;
+    }
+    if (localStorage.getItem('posts')) {
+      this.posts = JSON.parse(localStorage.getItem('posts'))
+    }
+  }
+    
+     
+}
     
     
     </script>
     
-    <style>
-    
-    #tableMain{
-    
-        overflow: auto;
-    
+<style>
+#tableMain{
+    overflow: auto;
+}
+tr,th,td{
+    height: 20px !important;
+    width: 30px !important;
     }
-    tr,th,td{
-        height: 20px !important;
-        width: 30px !important;
+#table tr,th,td{
+    height: 20px !important;
+    width: 30px !important;
     }
-    #table tr,th,td{
-        height: 20px !important;
-        width: 30px !important;
-    }
-    .form-control{
-        width: 300px;
-    }
+.form-control{
+    width: 300px;
+}
     </style>
     
