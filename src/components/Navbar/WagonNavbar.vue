@@ -51,22 +51,24 @@
   </template>
   
   <script>
-export default{
-    name: 'Navbar',
-    props: ['tabs', 'counter'],
-    data: function(){
-        return{
-            inner_counter: this.counter
+    export default {
+        name: 'Navbar',
+        props: ['tabs', 'counter'],
+        data: function(){
+            return{
+                inner_counter: this.counter
+            }
+        },
+        methods:{
+            newTab(tabname) {
+                this.tabs.push({'name': tabname, 'id': Date.now() })
+                
+                localStorage.setItem('tabs', JSON.stringify([...this.tabs]))
+            }
         }
-    },
-    methods:{
-        newTab(tabname) {
-            this.tabs.push({'name': tabname, 'id': this.inner_counter++ })
-        }
+    
     }
-   
-}
-  
+    
   
   </script>
   

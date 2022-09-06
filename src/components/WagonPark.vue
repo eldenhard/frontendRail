@@ -10,7 +10,7 @@
                     <b-tab v-for="i in tabs" :key="i.id" >
   
                         <template #title>
-                            <span>Таблица {{i.id}}</span>
+                            <span>Таблица {{i.name}}</span>
                             <span @click="closeTab(i.id)">&nbsp;&nbsp;❌</span>
                         </template>
   
@@ -40,8 +40,8 @@
   import WagonTable from './Table/WagonTable.vue'
   import FlightTable from './Table/FlightTable.vue'
   import DislocationTable from './Table/DislocationTable.vue'
-
-  
+    import { onMounted } from 'vue'
+    
 export default{
     name: 'WagonPark',
     components:{WagonTable, FlightTable, WagonNavbar, DislocationTable},
@@ -58,10 +58,19 @@ export default{
                     this.tabs.splice(i, 1)
                 }
             }
+            localStorage.setItem('tabs', JSON.stringify([...this.tabs]))
+            
             localStorage.clear()
         },
-  
-    }   
+    },
+    mounted() {
+        const tabs = localStorage.getItem('tabs')
+        console.log(tabs)
+
+        if (tabs) {
+            this.tabs = JSON.parse(tabs)
+        }
+    } 
 }
   
   
