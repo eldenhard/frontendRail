@@ -12,7 +12,14 @@
                     </b-dropdown>
                 </li>
   
-             
+                <li class="navbarList">
+                    <div @click="newTab('Договора')">
+                        <img src="@/assets/report.png" class="image">
+                    </div>
+                    <b-dropdown  text="Договора" >
+                        <b-dropdown-item @click="newTab('Договора')">Договор 1</b-dropdown-item>
+                    </b-dropdown>
+                </li>
             </ul>
         </div>
 

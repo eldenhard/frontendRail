@@ -7,8 +7,8 @@
                     <div @click="newTab('Дислокация')">
                         <img src="@/assets/map.png" class="image">
                     </div>
-                    <b-dropdown text="Дислокация">
-                        <b-dropdown-item @click="newTab('Дислокация-таблица')">дислокация 1</b-dropdown-item>
+                    <b-dropdown text="Дислокация"style="width: 100%">
+                        <b-dropdown-item @click="newTab('Дислокация-таблица')" >дислокация 1</b-dropdown-item>
                     </b-dropdown>
                 </li>
   
@@ -16,7 +16,7 @@
                     <div @click="newTab('Рейсы')">
                         <img src="@/assets/flight.png" class="image">
                     </div>
-                    <b-dropdown text="Рейсы">
+                    <b-dropdown text="Рейсы" style="width: 100%">
                         <b-dropdown-item @click="newTab('Рейсы-таблица')">Рейсы 1</b-dropdown-item>
                     </b-dropdown>
                 </li>
@@ -25,8 +25,8 @@
                     <div @click="newTab('Вагоны')">
                         <img src="@/assets/wagon.png" class="image">
                     </div>
-                    <b-dropdown  text="Вагоны" >
-                        <b-dropdown-item @click="newTab('Вагоны-таблица')">Вагоны 1</b-dropdown-item>
+                    <b-dropdown  text="Вагоны" style="width: 100%">
+                        <b-dropdown-item @click="newTab('Полигоны')">По полигонам</b-dropdown-item>
                     </b-dropdown>
                 </li>
   
@@ -34,8 +34,12 @@
                     <div @click="newTab('Отчеты')">
                         <img src="@/assets/report.png" class="image">
                     </div>
-                    <b-dropdown text="Отчеты">
+                    <b-dropdown text="Отчеты" style="width: 100%">
                         <b-dropdown-item @click="newTab('Отчеты-таблица')">Отчеты 1</b-dropdown-item>
+                        <b-dropdown-item @click="newTab('Брошенные вагоны')">БРОС. вагоны</b-dropdown-item>
+                        <b-dropdown-item @click="newTab('Брошенные вагоны')">План факт. по дог.</b-dropdown-item>
+
+
                     </b-dropdown>
                 </li>
             </ul>
