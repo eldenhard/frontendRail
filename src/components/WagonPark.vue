@@ -40,7 +40,6 @@
   import WagonTable from './Table/WagonTable.vue'
   import FlightTable from './Table/FlightTable.vue'
   import DislocationTable from './Table/DislocationTable.vue'
-    import { onMounted } from 'vue'
     
 export default{
     name: 'WagonPark',
@@ -65,8 +64,6 @@ export default{
     },
     mounted() {
         const tabs = localStorage.getItem('tabs')
-        console.log(tabs)
-
         if (tabs) {
             this.tabs = JSON.parse(tabs)
         }
