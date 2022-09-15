@@ -13,386 +13,358 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td v-for="wagon in WagonsModel" :key="wagon.number">{{wagon.number}}</td>
-          <td v-for="wagon in WagonsModel" :key="wagon.number">{{wagon.is_problem}}</td>
-          <td v-for="wagon in WagonsModel" :key="wagon.number">{{wagon.features}}</td>
-          <td v-for="wagon in WagonsModel" :key="wagon.number">{{wagon.volume}}</td>
-          <td v-for="wagon in WagonsModel" :key="wagon.number">{{wagon.tare}}</td>
-          <td v-for="wagon in WagonsModel" :key="wagon.number">{{wagon.type}}</td>
-        </tr>
-       
+        <tr v-for="wagon in WagonsModel" :key="wagon.number">
+          <td>{{wagon.number}}</td>
+          <td>{{wagon.is_problem}}</td>
+          <td>{{wagon.features}}</td>
+          <td>{{wagon.volume}}</td>
+          <td>{{wagon.tare}}</td>
+          <td>{{wagon.type}}</td>
+       </tr>
+
        
       </tbody>
     </table>
-                <b-card no-body
-                style="background: #ECECEC;
-                border: none;
-                text-decoration: none;
-                width: 100%;">
-                    <b-tabs card  style="background: #ECECEC;"  small card>
-                        <b-tab title="Состояние" active style="color: black;" >
-                                <b-card-text style="margin-top: -30px;">
-                                <div style="width:100%; overflow: auto;">
-                                <table>
-                                        <thead>
-                                            <tr>
-                                            <th>{{WagonModel.number}}</th>
-                                            <th> {{WagonStateModel.state}}</th>
-                                            <th>{{WagonStateModel.state_value}}</th>
-                                            <th>{{WagonStateModel.state_value_digital}}</th>
-                                            <th>{{WagonStateModel.updated_at}}</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                            <td>{{WagonModel.number}}</td>
-                                            <td>
-                                                <span>{{WagonStateModel.state}}</span>
-                                            </td>
-                                            <td>
-                                                <span>{{WagonStateModel.state_value}}</span>
-                                            </td>
-                                            <td>
-                                                <span>{{WagonStateModel.state_value_digital}}</span>
-                                            </td>
-                                            <td class="wrap">{{WagonStateModel.updated_at}}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>  
-                                </div>       
-                            </b-card-text>
-                        </b-tab>
-                        <b-tab title="Тип">
-                                <b-card-text style="margin-top: -30px;">
-                                    <div style="width:100%; overflow: auto; ">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                            <th>{{WagonModel.number}}</th>
-                                            <th>{{WagonTypeModel.name}}</th>
-                                            <th>{{WagonTypeModel.short_name}}</th>
-                                            <th>{{WagonTypeModel.in_use}}</th>
-                                            <th>{{WagonTypeModel.name_rp}}</th>
-                                            <th>{{WagonTypeModel.foot_length}}</th>
-                                            <th>{{WagonTypeModel.code_ustng_empty}}</th>
-                                            <th>{{WagonTypeModel.code_gng_empty}}</th>
-                                            <th>{{WagonTypeModel.code_etsng_empty_repair}}</th>
-                                            <th>{{WagonTypeModel.trf_code}}</th>
-                                            <th>{{WagonTypeModel.rtf_equal_container_code}}</th>
+<b-card no-body style="background: #ECECEC; border: none; text-decoration: none; width: 100%;">
+    <b-tabs card  style="background: #ECECEC;"  small card>
+        <b-tab title="Состояние" active style="color: black;" >
+                <b-card-text style="margin-top: -30px;">
+                <div style="width:100%; overflow: auto;">
+                <table>
+                        <thead>
+                            <tr>
+                            <th>{{WagonModel.number}}</th>
+                            <th> {{WagonStateModel.state}}</th>
+                            <th>{{WagonStateModel.state_value}}</th>
+                            <th>{{WagonStateModel.state_value_digital}}</th>
+                            <th>{{WagonStateModel.updated_at}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="wagontype in WagonStatesModel" :key="wagontype.id">
+                            <td>{{wagontype.number}}</td>
+                            <td>{{wagontype.state}}</td>
+                            <td>{{wagontype.state_value}}</td>
+                            <td>{{wagontype.state_value_digital}}</td>
+                            <td>{{wagontype.updated_at}}</td>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                            <td>{{WagonModel.number}}</td>
-                                            <td>
-                                                {{WagonTypeModel.name}}
-                                            </td>
-                                            <td>
-                                                {{WagonTypeModel.short_name}}
-                                            </td>
-                                            <td>
-                                                {{WagonTypeModel.in_use}}
-                                            </td>
-                                            <td class="wrap">{{WagonTypeModel.name_rp}}</td>
-                                            <td>
-                                                {{WagonTypeModel.foot_length}}                                           
-                                             </td>
-                                             <td>
-                                                {{WagonTypeModel.code_ustng_empty}}                                           
-                                             </td>
-                                             <td>
-                                                {{WagonTypeModel.code_gng_empty}}                                           
-                                             </td>
-                                             <td>
-                                                {{WagonTypeModel.code_etsng_empty_repair}}                                           
-                                             </td>
-                                             <td>
-                                                {{WagonTypeModel.trf_code}}                                           
-                                             </td>
-                                             <td>
-                                                {{WagonTypeModel.rtf_equal_container_code}}                                           
-                                             </td>
-                                            
-                                            </tr>
-                                        
-                                        </tbody>
-                                    </table>  
-                                </div>                                       
-                                </b-card-text>
-                        </b-tab>
-                        <b-tab title="Паспорт">
-                            <b-card-text style="margin-top: -30px;">
-                                <div style="width:100%; overflow: auto;">
-                                <table>
-                                      <thead>
-                                        <tr>
-                                            <th>{{WagonPassportModel.next_planed_repair_date}}</th>
-                                            <th>{{WagonPassportModel.last_planed_repair_date}}</th>
-                                            <th>{{WagonPassportModel.capacity}}</th>
-                                            <th>{{WagonPassportModel.model}}</th>
-                                            <th>{{WagonPassportModel.days_before_date_plan_repair}}</th>
-                                            <th>{{WagonPassportModel.verbose_name}}</th>
-                                            <th>{{WagonPassportModel.next_plan_repair_kind}}</th>
-                                            <th>{{WagonPassportModel.build_date}}</th>
-                                            <th>{{WagonPassportModel.lifetime}}</th>
-                                            <th>{{WagonPassportModel.tenant_code_abd}}</th>
-                                            <th>{{WagonPassportModel.owner_code_abd}}</th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <tr>
-                                            <td>{{WagonPassportModel.next_planed_repair_date}}</td>
-                                            <td>{{WagonPassportModel.last_planed_repair_date}}</td>
-                                            <td>{{WagonPassportModel.capacity}}</td>
-                                            <td>{{WagonPassportModel.model}}</td>
-                                            <td>{{WagonPassportModel.days_before_date_plan_repair}}</td>
-                                            <td>{{WagonPassportModel.verbose_name}}</td>
-                                            <td>{{WagonPassportModel.next_plan_repair_kind}}</td>
-                                            <td>{{WagonPassportModel.build_date}}</td>
-                                            <td>{{WagonPassportModel.lifetime}}</td>
-                                            <td>{{WagonPassportModel.tenant_code_abd}}</td>
-                                            <td>{{WagonPassportModel.owner_code_abd}}</td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                </div>
-                            </b-card-text>
-                        </b-tab>
-                        <b-tab title="Принадлежность">
-                            <b-card-text style="margin-top: -30px;">
-                                <div style="width:100%; overflow: auto;">
-                                <table>
-                                       <thead>
-                                        <tr>
-                                            <th>{{WagonModel.number}}</th>
-                                            <th>{{WagonBelongModel.name}}</th>
-                                            <th>{{WagonBelongModel.owner}}</th>
-                                            <th>{{WagonBelongModel.tenant}}</th>
-                                            <th>{{WagonBelongModel.in_company_control}}</th>
-                                            <th>{{WagonBelongModel.wagon_source_company}}</th>
-                                            <th>{{WagonBelongModel.owner_okpo}}</th>
-                                            <th>{{WagonBelongModel.tenant_okpo}}</th>
-                                        </tr>
-                                       </thead>
-                                       <tbody>
-                                        <tr>
-                                            <td>{{WagonModel.number}}</td>
-                                            <td>{{WagonBelongModel.name}}</td>
-                                            <td>{{WagonBelongModel.owner}}</td>
-                                            <td>{{WagonBelongModel.tenant}}</td>
-                                            <td>{{WagonBelongModel.in_company_control}}</td>
-                                            <td>{{WagonBelongModel.wagon_source_company}}</td>
-                                            <td>{{WagonBelongModel.owner_okpo}}</td>
-                                            <td>{{WagonBelongModel.tenant_okpo}}</td>
+                            </tr>
+                        </tbody>
+                    </table>  
+                </div>       
+            </b-card-text>
+        </b-tab>
+        <b-tab title="Тип">
+                <b-card-text style="margin-top: -30px;">
+                    <div style="width:100%; overflow: auto; ">
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>{{WagonModel.number}}</th>
+                            <th>{{WagonTypeModel.name}}</th>
+                            <th>{{WagonTypeModel.short_name}}</th>
+                            <th>{{WagonTypeModel.in_use}}</th>
+                            <th>{{WagonTypeModel.name_rp}}</th>
+                            <th>{{WagonTypeModel.foot_length}}</th>
+                            <th>{{WagonTypeModel.code_ustng_empty}}</th>
+                            <th>{{WagonTypeModel.code_gng_empty}}</th>
+                            <th>{{WagonTypeModel.code_etsng_empty_repair}}</th>
+                            <th>{{WagonTypeModel.trf_code}}</th>
+                            <th>{{WagonTypeModel.rtf_equal_container_code}}</th>
 
-                                        </tr>
-                                       </tbody>
-                                    </table>  
-                                </div>                                   
-                                </b-card-text>
-                        </b-tab>
-                        <b-tab title="Ремонт">
-                            <b-card-text style="margin-top: -30px;">
-                                <div style="width:100%; overflow: auto;">
-                                <table>
-                                       <thead>
-                                        <tr>
-                                            <th>{{WagonModel.number}}</th>
-                                            <th>{{WagonRepairModel.nrp}}</th>
-                                            <th>{{WagonRepairModel.malfunction_current}}</th>
-                                            <th>{{WagonRepairModel.repair_type}}</th>
-                                            <th>{{WagonRepairModel.nrp_date}}</th>
-                                            <th>{{WagonRepairModel.repair_kind}}</th>
-                                            <th>{{WagonRepairModel.next_planed_repair_date}}</th>
-                                            <th>{{WagonRepairModel.next_planed_repair_depot}}</th>
-                                            <th>{{WagonRepairModel.status}}</th>
-                                            <th>{{WagonRepairModel.repair_station_downtime}}</th>
-                                            <th>{{WagonRepairModel.malfunction_code}}</th>
-                                            <th>{{WagonRepairModel.malfunction_kind}}</th>
-                                            <th>{{WagonRepairModel.repair_compensation}}</th>
-                                        </tr>
-                                       </thead>
-                                       <tbody>
-                                        <tr>
-                                            <td>{{WagonModel.number}}</td>
-                                            <td>{{WagonRepairModel.nrp}}</td>
-                                            <td>{{WagonRepairModel.malfunction_current}}</td>
-                                            <td>{{WagonRepairModel.repair_type}}</td>
-                                            <td>{{WagonRepairModel.nrp_date}}</td>
-                                            <td>{{WagonRepairModel.repair_kind}}</td>
-                                            <td>{{WagonRepairModel.next_planed_repair_date}}</td>
-                                            <td>{{WagonRepairModel.next_planed_repair_depot}}</td>
-                                            <td>{{WagonRepairModel.status}}</td>
-                                            <td>{{WagonRepairModel.repair_station_downtime}}</td>
-                                            <td>{{WagonRepairModel.malfunction_code}}</td>
-                                            <td>{{WagonRepairModel.malfunction_kind}}</td>
-                                            <td>{{WagonRepairModel.repair_compensation}}</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for=" wagon in WagonsTypeModel" :key="wagon.id">
+                                <td>{{wagon.number}}</td>
+                                <td>{{wagon.name}}</td>
+                                <td>{{wagon.short_name}}</td>
+                                <td>{{WagonTypeModel.in_use}}</td>
+                                <td class="wrap">{{wagon.name_rp}}</td>
+                                <td>{{wagon.foot_length}}</td>
+                                <td>{{wagon.code_ustng_empty}}</td>
+                                <td>{{wagon.code_gng_empty}}</td>
+                                <td>{{wagon.code_etsng_empty_repair}}</td>
+                                <td>{{wagon.trf_code}}</td>
+                                <td>{{wagon.rtf_equal_container_code}}</td>
+                            </tr>
+                        
+                        </tbody>
+                    </table>  
+                </div>                                       
+                </b-card-text>
+        </b-tab>
+        <b-tab title="Паспорт">
+            <b-card-text style="margin-top: -30px;">
+                <div style="width:100%; overflow: auto;">
+                <table>
+                        <thead>
+                        <tr>
+                            <th>{{WagonPassportModel.next_planed_repair_date}}</th>
+                            <th>{{WagonPassportModel.last_planed_repair_date}}</th>
+                            <th>{{WagonPassportModel.capacity}}</th>
+                            <th>{{WagonPassportModel.model}}</th>
+                            <th>{{WagonPassportModel.days_before_date_plan_repair}}</th>
+                            <th>{{WagonPassportModel.verbose_name}}</th>
+                            <th>{{WagonPassportModel.next_plan_repair_kind}}</th>
+                            <th>{{WagonPassportModel.build_date}}</th>
+                            <th>{{WagonPassportModel.lifetime}}</th>
+                            <th>{{WagonPassportModel.tenant_code_abd}}</th>
+                            <th>{{WagonPassportModel.owner_code_abd}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="wagon in WagonsPassportModel" :key="wagon.id">
+                            <td>{{wagon.next_planed_repair_date}}</td>
+                            <td>{{wagon.last_planed_repair_date}}</td>
+                            <td>{{wagon.capacity}}</td>
+                            <td>{{wagon.model}}</td>
+                            <td>{{wagon.days_before_date_plan_repair}}</td>
+                            <td>{{wagon.verbose_name}}</td>
+                            <td>{{wagon.next_plan_repair_kind}}</td>
+                            <td>{{wagon.build_date}}</td>
+                            <td>{{wagon.lifetime}}</td>
+                            <td>{{wagon.tenant_code_abd}}</td>
+                            <td>{{wagon.owner_code_abd}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </b-card-text>
+        </b-tab>
+        <b-tab title="Принадлежность">
+            <b-card-text style="margin-top: -30px;">
+                <div style="width:100%; overflow: auto;">
+                <table>
+                        <thead>
+                        <tr>
+                            <th>{{WagonModel.number}}</th>
+                            <th>{{WagonBelongModel.name}}</th>
+                            <th>{{WagonBelongModel.owner}}</th>
+                            <th>{{WagonBelongModel.tenant}}</th>
+                            <th>{{WagonBelongModel.in_company_control}}</th>
+                            <th>{{WagonBelongModel.wagon_source_company}}</th>
+                            <th>{{WagonBelongModel.owner_okpo}}</th>
+                            <th>{{WagonBelongModel.tenant_okpo}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="wagon in WagonsBelongModel" :key="wagon.id">
+                            <td>{{wagon.number}}</td>
+                            <td>{{wagon.name}}</td>
+                            <td>{{wagon.owner}}</td>
+                            <td>{{wagon.tenant}}</td>
+                            <td>{{wagon.in_company_control}}</td>
+                            <td>{{wagon.wagon_source_company}}</td>
+                            <td>{{wagon.owner_okpo}}</td>
+                            <td>{{wagon.tenant_okpo}}</td>
 
-                                        </tr>
-                                       </tbody>
-                                </table> 
-                                </div>                                    
-                            </b-card-text>
-                        </b-tab>
-                        <b-tab title="Остаточный пробег">
-                            <b-card-text style="margin-top: -30px;">
-                                <div style="width:100%; overflow: auto;">
-                                <table>
-                                        <thead>
-                                            <tr>
-                                                <th>{{WagonModel.number}}</th>
-                                                <th>{{WagonRestRunModel.actual_run}}</th>
-                                                <th>{{WagonRestRunModel.rest_run}}</th>
-                                                <th>{{WagonRestRunModel.run_limit}}</th>
-                                                <th>{{WagonRestRunModel.run_over_limit}}</th>
+                        </tr>
+                        </tbody>
+                    </table>  
+                </div>                                   
+                </b-card-text>
+        </b-tab>
+        <b-tab title="Ремонт">
+            <b-card-text style="margin-top: -30px;">
+                <div style="width:100%; overflow: auto;">
+                <table>
+                        <thead>
+                        <tr>
+                            <th>{{WagonModel.number}}</th>
+                            <th>{{WagonRepairModel.nrp}}</th>
+                            <th>{{WagonRepairModel.malfunction_current}}</th>
+                            <th>{{WagonRepairModel.repair_type}}</th>
+                            <th>{{WagonRepairModel.nrp_date}}</th>
+                            <th>{{WagonRepairModel.repair_kind}}</th>
+                            <th>{{WagonRepairModel.next_planed_repair_date}}</th>
+                            <th>{{WagonRepairModel.next_planed_repair_depot}}</th>
+                            <th>{{WagonRepairModel.status}}</th>
+                            <th>{{WagonRepairModel.repair_station_downtime}}</th>
+                            <th>{{WagonRepairModel.malfunction_code}}</th>
+                            <th>{{WagonRepairModel.malfunction_kind}}</th>
+                            <th>{{WagonRepairModel.repair_compensation}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{WagonModel.number}}</td>
+                            <td>{{WagonRepairModel.nrp}}</td>
+                            <td>{{WagonRepairModel.malfunction_current}}</td>
+                            <td>{{WagonRepairModel.repair_type}}</td>
+                            <td>{{WagonRepairModel.nrp_date}}</td>
+                            <td>{{WagonRepairModel.repair_kind}}</td>
+                            <td>{{WagonRepairModel.next_planed_repair_date}}</td>
+                            <td>{{WagonRepairModel.next_planed_repair_depot}}</td>
+                            <td>{{WagonRepairModel.status}}</td>
+                            <td>{{WagonRepairModel.repair_station_downtime}}</td>
+                            <td>{{WagonRepairModel.malfunction_code}}</td>
+                            <td>{{WagonRepairModel.malfunction_kind}}</td>
+                            <td>{{WagonRepairModel.repair_compensation}}</td>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>{{WagonModel.number}}</td>
-                                                <td>{{WagonRestRunModel.actual_run}}</td>
-                                                <td>{{WagonRestRunModel.rest_run}}</td>
-                                                <td>{{WagonRestRunModel.run_limit}}</td>
-                                                <td>{{WagonRestRunModel.run_over_limit}}</td>
+                        </tr>
+                        </tbody>
+                </table> 
+                </div>                                    
+            </b-card-text>
+        </b-tab>
+        <b-tab title="Остаточный пробег">
+            <b-card-text style="margin-top: -30px;">
+                <div style="width:100%; overflow: auto;">
+                <table>
+                        <thead>
+                            <tr>
+                                <th>{{WagonModel.number}}</th>
+                                <th>{{WagonRestRunModel.actual_run}}</th>
+                                <th>{{WagonRestRunModel.rest_run}}</th>
+                                <th>{{WagonRestRunModel.run_limit}}</th>
+                                <th>{{WagonRestRunModel.run_over_limit}}</th>
 
-                                            </tr>
-                                        </tbody>
-                                    </table>  
-                                </div>                                   
-                                </b-card-text>
-                        </b-tab>
-                        <b-tab title="Модернизация">
-                            <b-card-text style="margin-top: -30px;">
-                                <div style="width:100%; overflow: auto;">
-                                <table>
-                                      <thead>
-                                        <tr>
-                                            <th>{{WagonModel.number}}</th>
-                                            <th>{{WagonModernisationModel.last_date}}</th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <tr>
-                                            <td>{{WagonModel.number}}</td>
-                                            <td>{{WagonModernisationModel.last_date}}</td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                </div>                                   
-                                </b-card-text>
-                        </b-tab>
-                        <b-tab title="Аренда">
-                            <b-card-text style="margin-top: -30px;">
-                                <div style="width:100%; overflow: auto;">
-                                <table>
-                                       <thead>
-                                        <tr>
-                                            <th>{{WagonModel.number}}</th>
-                                            <th>{{WagonRentModel.rent_doc}}</th>
-                                            <th>{{WagonRentModel.rent_doc_counterparty}}</th>
-                                            <th>{{WagonRentModel.acceptance_certificate_number}}</th>
-                                            <th>{{WagonRentModel.acceptance_certificate_date}}</th>
-                                            <th>{{WagonRentModel.acceptance_station}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="wagon in WagonsRestRunModel" :key="wagon.id">
+                                <td>{{wagon.number}}</td>
+                                <td>{{wagon.actual_run}}</td>
+                                <td>{{wagon.rest_run}}</td>
+                                <td>{{wagon.run_limit}}</td>
+                                <td>{{wagon.run_over_limit}}</td>
 
-                                        </tr>
-                                       </thead>
-                                       <tbody>
-                                        <tr>
-                                            <td>{{WagonModel.number}}</td>
-                                            <td>{{WagonRentModel.rent_doc}}</td>
-                                            <td>{{WagonRentModel.rent_doc_counterparty}}</td>
-                                            <td>{{WagonRentModel.acceptance_certificate_number}}</td>
-                                            <td>{{WagonRentModel.acceptance_certificate_date}}</td>
-                                            <td>{{WagonRentModel.acceptance_station}}</td>
+                            </tr>
+                        </tbody>
+                    </table>  
+                </div>                                   
+                </b-card-text>
+        </b-tab>
+        <b-tab title="Модернизация">
+            <b-card-text style="margin-top: -30px;">
+                <div style="width:100%; overflow: auto;">
+                <table>
+                        <thead>
+                        <tr>
+                            <th>{{WagonModel.number}}</th>
+                            <th>{{WagonModernisationModel.last_date}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="wagon in WagonsModernisationModel" :key="wagon.id">
+                            <td>{{wagon.number}}</td>
+                            <td>{{wagon.last_date}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>                                   
+                </b-card-text>
+        </b-tab>
+        <b-tab title="Аренда">
+            <b-card-text style="margin-top: -30px;">
+                <div style="width:100%; overflow: auto;">
+                <table>
+                        <thead>
+                        <tr>
+                            <th>{{WagonModel.number}}</th>
+                            <th>{{WagonRentModel.rent_doc}}</th>
+                            <th>{{WagonRentModel.rent_doc_counterparty}}</th>
+                            <th>{{WagonRentModel.acceptance_certificate_number}}</th>
+                            <th>{{WagonRentModel.acceptance_certificate_date}}</th>
+                            <th>{{WagonRentModel.acceptance_station}}</th>
 
-                                        </tr>
-                                       </tbody>
-                                    </table>    
-                                </div>                                 
-                                </b-card-text>
-                        </b-tab>
-                        <b-tab title="Лизинг">
-                            <b-card-text style="margin-top: -30px;">
-                                <div style="width:100%; overflow: auto;">
-                                <table>
-                                       <thead>
-                                        <tr>
-                                            <th>{{WagonModel.number}}</th>
-                                            <th>{{WagonLeasingModel.leasing_doc}}</th>
-                                            <th>{{WagonLeasingModel.leasing_doc_lifetime}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="wagon in WagonsRentModel" :key="wagon.id">
+                            <td>{{wagon.number}}</td>
+                            <td>{{wagon.rent_doc}}</td>
+                            <td>{{wagon.rent_doc_counterparty}}</td>
+                            <td>{{wagon.acceptance_certificate_number}}</td>
+                            <td>{{wagon.acceptance_certificate_date}}</td>
+                            <td>{{wagon.acceptance_station}}</td>
 
-                                        </tr>
-                                       </thead>
-                                       <tbody>
-                                        <tr>
-                                            <td>{{WagonModel.number}}</td>
-                                            <td>{{WagonLeasingModel.leasing_doc}}</td>
-                                            <td>{{WagonLeasingModel.leasing_doc_lifetime}}</td>
-                                        </tr>
-                                       </tbody>
-                                    </table>  
-                                </div>                                   
-                                </b-card-text>
-                        </b-tab>
-                        <b-tab title="Страхование">
-                            <b-card-text style="margin-top: -30px;">
-                                <div style="width:100%; overflow: auto;">
-                                <table>
-                                       <thead>
-                                        <tr>
-                                            <th>{{WagonModel.number}}</th>
-                                            <th>{{WagonInsuranceModel.insurance_doc}}</th>
-                                            <th>{{WagonInsuranceModel.insurance_doc_lifetime}}</th>
-                                        </tr>
-                                       </thead>
-                                       <tbody>
-                                        <tr>
-                                            <td>{{WagonModel.number}}</td>
-                                            <td>{{WagonInsuranceModel.insurance_doc}}</td>
-                                            <td>{{WagonInsuranceModel.insurance_doc_lifetime}}</td>
-                                        </tr>
-                                       </tbody>
-                                    </table>  
-                                </div>                                   
-                                </b-card-text>
-                        </b-tab>
-                        <b-tab title="ЭТРАН">
-                            <b-card-text style="margin-top: -30px;">
-                                <div style="width:100%; overflow: auto;">
-                                <table>
-                                        <thead>
-                                            <tr>
-                                                <th>{{WagonModel.number}}</th>
-                                                <th>{{WagonEtranInfoModel.owner}}</th>
-                                                <th>{{WagonEtranInfoModel.tenant}}</th>
-                                                <th>{{WagonEtranInfoModel.signing}}</th>
-                                                <th>{{WagonEtranInfoModel.parking}}</th>
-                                                <th>{{WagonEtranInfoModel.telegram_number}}</th>
-                                                <th>{{WagonEtranInfoModel.number_from_expeditor}}</th>
-                                              
+                        </tr>
+                        </tbody>
+                    </table>    
+                </div>                                 
+                </b-card-text>
+        </b-tab>
+        <b-tab title="Лизинг">
+            <b-card-text style="margin-top: -30px;">
+                <div style="width:100%; overflow: auto;">
+                <table>
+                        <thead>
+                        <tr>
+                            <th>{{WagonModel.number}}</th>
+                            <th>{{WagonLeasingModel.leasing_doc}}</th>
+                            <th>{{WagonLeasingModel.leasing_doc_lifetime}}</th>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>{{WagonModel.number}}</td>
-                                                <td>{{WagonEtranInfoModel.owner}}</td>
-                                                <td>{{WagonEtranInfoModel.tenant}}</td>
-                                                <td>{{WagonEtranInfoModel.signing}}</td>
-                                                <td>{{WagonEtranInfoModel.parking}}</td>
-                                                <td>{{WagonEtranInfoModel.telegram_number}}</td>
-                                                <td>{{WagonEtranInfoModel.number_from_expeditor}}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table> 
-                                </div>                                    
-                                </b-card-text>
-                        </b-tab>
-                    </b-tabs>
-                    </b-card>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="wagon in WagonsLeasingModel" :key="wagon.id">
+                            <td>{{wagon.number}}</td>
+                            <td>{{wagon.leasing_doc}}</td>
+                            <td>{{wagon.leasing_doc_lifetime}}</td>
+                        </tr>
+                        </tbody>
+                    </table>  
+                </div>                                   
+                </b-card-text>
+        </b-tab>
+        <b-tab title="Страхование">
+            <b-card-text style="margin-top: -30px;">
+                <div style="width:100%; overflow: auto;">
+                <table>
+                        <thead>
+                        <tr>
+                            <th>{{WagonModel.number}}</th>
+                            <th>{{WagonInsuranceModel.insurance_doc}}</th>
+                            <th>{{WagonInsuranceModel.insurance_doc_lifetime}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="wagon in WagonsInsuranceModel" :key="wagon.id">
+                            <td>{{wagon.number}}</td>
+                            <td>{{wagon.insurance_doc}}</td>
+                            <td>{{wagon.insurance_doc_lifetime}}</td>
+                        </tr>
+                        </tbody>
+                    </table>  
+                </div>                                   
+                </b-card-text>
+        </b-tab>
+        <b-tab title="ЭТРАН">
+            <b-card-text style="margin-top: -30px;">
+                <div style="width:100%; overflow: auto;">
+                <table>
+                        <thead>
+                            <tr>
+                                <th>{{WagonModel.number}}</th>
+                                <th>{{WagonEtranInfoModel.owner}}</th>
+                                <th>{{WagonEtranInfoModel.tenant}}</th>
+                                <th>{{WagonEtranInfoModel.signing}}</th>
+                                <th>{{WagonEtranInfoModel.parking}}</th>
+                                <th>{{WagonEtranInfoModel.telegram_number}}</th>
+                                <th>{{WagonEtranInfoModel.number_from_expeditor}}</th>
+                                
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="wagon in WagonsEtranInfoModel" :key="wagon.id">
+                                <td>{{wagon.number}}</td>
+                                <td>{{wagon.owner}}</td>
+                                <td>{{wagon.tenant}}</td>
+                                <td>{{wagon.signing}}</td>
+                                <td>{{wagon.parking}}</td>
+                                <td>{{wagon.telegram_number}}</td>
+                                <td>{{wagon.number_from_expeditor}}</td>
+                            </tr>
+                        </tbody>
+                    </table> 
+                </div>                                    
+                </b-card-text>
+        </b-tab>
+    </b-tabs>
+</b-card>
     </div>
 </div>
 </template>
@@ -413,6 +385,7 @@ export default{
                 type: 'Тип вагона'
             },
             WagonStateModel:{
+                number: 'Номер вагона',
                 state: 'Состояние',
                 state_value: 'Значение "Состояние"',
                 state_value_digital: 'Значение "Состояние" числовое',
@@ -507,27 +480,232 @@ export default{
             number_from_expeditor: '№ от экспедитора'
 
            },
-           WagonsModel:[],
-           WagonsTypeModel: [],
-           WagonsPassportModel: [],
-           WagonsBelongModel: [],
+           
+           WagonsModel:[
+           { 'number': 1,
+            'is_problem': 2,
+            'features': 'Дырка',
+            'volume': 50,
+            'tare': 'Контейнер',
+            'type': 'Платформа'
+            },
+            {   'number': 2,
+                'is_problem': 31,
+                'features': 'Прострел',
+                'volume': 501,
+                'tare': 'Крытый вагон',
+                'type': 'Платформа2'
+            },
+            {   'number': 3,
+                'is_problem': 31,
+                'features': 'Сломан',
+                'volume': 501,
+                'tare': 'Полувагон',
+                'type': 'Платформа2'
+            },
+            {   'number': 4,
+                'is_problem': 31,
+                'features': 'Взорван',
+                'volume': 501,
+                'tare': 'Хоппер',
+                'type': 'Платформа2'
+            }
+
+           ],
+           WagonStatesModel: [
+           {
+            'number': 1,
+            'state': 'Плохое',
+            'state_value': '12',
+            'state_value_digital': '12',
+            'updated_at': Date.now()
+           },
+           {
+           'number': 2,
+            'state': 'Хорошее',
+            'state_value': '2',
+            'state_value_digital': '17',
+            'updated_at': Date.now()
+           }
+           ],
+           WagonsTypeModel: [
+           {
+            'number': 1,
+            'name': 'Вагон',
+            'short_name': 'Ква',
+            'in_use': 'Используется',
+            'name_rp': 'РАП',
+            'foot_length': '20',
+            'code_ustng_empty': '9909',
+            'code_gng_empty': '68',
+            'code_etsng_empty_repair': '02',
+            'trf_code': '89899',
+            'rtf_equal_container_code': '100-001'
+           }, {
+            'number': 1,
+            'name': 'Вагон',
+            'short_name': 'Ква',
+            'in_use': 'Используется',
+            'name_rp': 'РАП',
+            'foot_length': '20',
+            'code_ustng_empty': '9909',
+            'code_gng_empty': '68',
+            'code_etsng_empty_repair': '02',
+            'trf_code': '89899',
+            'rtf_equal_container_code': '100-001'
+           },
+           {
+            'number': 1,
+            'name': 'Вагон',
+            'short_name': 'Ква',
+            'in_use': 'Используется',
+            'name_rp': 'РАП',
+            'foot_length': '20',
+            'code_ustng_empty': '9909',
+            'code_gng_empty': '68',
+            'code_etsng_empty_repair': '02',
+            'trf_code': '89899',
+            'rtf_equal_container_code': '100-001'
+           }, {
+            'number': 1,
+            'name': 'Вагон',
+            'short_name': 'Ква',
+            'in_use': 'Используется',
+            'name_rp': 'РАП',
+            'foot_length': '20',
+            'code_ustng_empty': '9909',
+            'code_gng_empty': '68',
+            'code_etsng_empty_repair': '02',
+            'trf_code': '89899',
+            'rtf_equal_container_code': '100-001'
+           }, {
+            'number': 1,
+            'name': 'Вагон',
+            'short_name': 'Ква',
+            'in_use': 'Используется',
+            'name_rp': 'РАП',
+            'foot_length': '20',
+            'code_ustng_empty': '9909',
+            'code_gng_empty': '68',
+            'code_etsng_empty_repair': '02',
+            'trf_code': '89899',
+            'rtf_equal_container_code': '100-001'
+           }
+            ],
+           WagonsPassportModel: [
+            {
+            'next_planed_repair_date': '19.10.2020',
+            'last_planed_repair_date': '11.02.2015',
+            'capacity': '100',
+            'model': 'Kexi',
+            'days_before_date_plan_repair': '100',
+            'verbose_name': '12',
+            'next_plan_repair_kind': 'Капитальный',
+            'build_date': '9.07.2009', 
+            'lifetime': '30 лет',
+            'tenant_code_abd': '122',
+            'owner_code_abd': '435678'
+            },
+            {
+            'next_planed_repair_date': '19.10.2020',
+            'last_planed_repair_date': '11.02.2015',
+            'capacity': '100',
+            'model': 'Kexi',
+            'days_before_date_plan_repair': '100',
+            'verbose_name': '12',
+            'next_plan_repair_kind': 'Капитальный',
+            'build_date': '9.07.2009', 
+            'lifetime': '30 лет',
+            'tenant_code_abd': '122',
+            'owner_code_abd': '435678'
+            }
+           ],
+           WagonsBelongModel: [
+            {
+            'number': 1,
+            'name': 'Принадлежность',
+            'owner': 'ТрансТех',
+            'tenant': 'ТрансТех',
+            'in_company_control': 'В ТрансТех',
+            'wagon_source_company': 'Сбер',
+            'owner_okpo': '1234567',
+            'tenant_okpo': '9876543'
+            },
+            {
+            'number': 2,
+            'name': 'Принадлежность',
+            'owner': 'ТрансТех',
+            'tenant': 'ТрансТех',
+            'in_company_control': 'В ТрансТех',
+            'wagon_source_company': 'Сбер',
+            'owner_okpo': '1234567',
+            'tenant_okpo': '9876543'
+            }
+           ],
            WagonsRepairModel: [],
-           WagonsRestRunModel: [],
-           WagonsModernisationModel: [],
-           WagonsRentModel: [],
-           WagonsLeasingModel: [],
-           WagonsInsuranceModel: [],
-           WagonsEtranInfoModel: []
+           WagonsRestRunModel: [
+            {
+                'number': 1,
+                'actual_run': '123',
+                'rest_run': '12',
+                'run_limit': '10000',
+                'run_over_limit': '23'
+            },
+            {
+                'number': 2,
+                'actual_run': '123',
+                'rest_run': '12',
+                'run_limit': '10000',
+                'run_over_limit': '23'
+            }
+           ],
+           WagonsModernisationModel: [
+            {
+                'number': 1,
+                'last_date': '20.03.2022'
+            }
+           ],
+           WagonsRentModel: [
+            {
+                'number': 1,
+                'rent_doc': 'Был',
+                'rent_doc_counterparty': 'Иванов',
+                'acceptance_certificate_number': '1',
+                'acceptance_certificate_date': '11.01.2022',
+                'acceptance_station': 'Ковров'
+            }
+           ],
+           WagonsLeasingModel: [
+            {
+                'number': 1,
+                'leasing_doc': 'Договор ',
+                'leasing_doc_lifetime': '15.02.2023',
+
+            }
+           ],
+           WagonsInsuranceModel: [{
+            'number':1,
+            'insurance_doc': 'Договор',
+            'insurance_doc_lifetime': '30.02.2023'
+
+           }],
+           WagonsEtranInfoModel: [{
+            'number': 1,
+            'owner': 'Иванов',
+            'tenant': 'Петров',
+            'signing': 'Визирование +',
+            'parking': '-',
+            'telegram_number': '123',
+            'number_from_expeditor': '321'
+           }]
 
         }
-    },
-     async mounted(){
-        const res = await fetch('C:/Users/a.reshetilo/Desktop/WagonsModel.txt')
-        const WagonsModel = await res.json();
-        this.WagonsModel = WagonsModel
-        
-       }
     }
+}
+   
+        
+       
+    
 
     
 </script>
@@ -548,11 +726,7 @@ tr,td,th{
     margin-top: 66px;
     width: 50vw;
 }
-th{
-    background: #c04945;
-    border: 1px solid black;
-    color: white;
-}
+
 
 .table1 table {
   /* width: 35% !important; */

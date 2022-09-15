@@ -41,8 +41,8 @@ export default new Router({
     component: rates
     },
     {
-    path: '/Bookkeeping',
-    name: 'Bookkeeping',
+    path: '/bookkeeping',
+    name: 'bookkeeping',
     component: Bookkeeping
     },
    {
