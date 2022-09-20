@@ -1,8 +1,7 @@
 <template>
-  <div id="id01" class="modal" style="display:block">
-    <form class="modal-content animate">
+  <div id="id01" class="modal" :style="{'display': user.email ? 'none' : 'block'}">
+    <div class="modal-content animate">
       <div class="container">
-        Пользователь: {{user}}
         <label for="uname"><b>Логин</b></label>
         <input type="text" required placeholder="Введите логин" v-model="login">
 
@@ -11,7 +10,7 @@
 
         <button @click="submitEntry()">Войти</button>
       </div>
-    </form>
+    </div>
   </div>
 </template>
 
