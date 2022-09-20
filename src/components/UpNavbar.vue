@@ -8,22 +8,18 @@
     </li>
     <li class="UpNavList-item">
         <router-link to="/wagonpark"> Вагонный парк</router-link>
-        
     </li>
     <li class="UpNavList-item">
         <router-link to="/bookkeeping" >Бухгалтерия</router-link>
     </li>
     <li class="UpNavList-item">
         <router-link to="#" >Документооборот</router-link>
-    
     </li>
     <li class="UpNavList-item">
         <router-link to="/presentation" >Презентации</router-link>
-    
     </li>
     <li class="UpNavList-item">
         <router-link to="/rates" >Ставки</router-link>
-    
     </li>
 
 

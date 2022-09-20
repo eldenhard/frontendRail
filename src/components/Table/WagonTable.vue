@@ -20,6 +20,7 @@
           <td>{{wagon.volume}}</td>
           <td>{{wagon.tare}}</td>
           <td>{{wagon.type}}</td>
+          
        </tr>
 
        

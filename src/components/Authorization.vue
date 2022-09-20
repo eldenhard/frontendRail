@@ -1,42 +1,58 @@
 <template>
-    <div>
-
-
-<!-- <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Вход в учетную систему</button> -->
 
 <div id="id01" class="modal" style="display:block">
-  
   <form class="modal-content animate" action="/">
-    <div class="imgcontainer">
-      <!-- <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span> -->
-      <img src="../assets/img_avatar2.png" alt="Avatar" class="avatar">
-    </div>
-
     <div class="container">
+
       <label for="uname"><b>Логин</b></label>
-      <input type="text" placeholder="Введите логин" required>
+      <input type="text" required placeholder="Введите логин" v-model="login">
 
       <label for="psw"><b>Пароль</b></label>
-      <input type="password" placeholder="Введите пароль" required>
-        
-      <button type="submit" onclick="window.location.href ='/wagonpark';">Войти</button>
+      <input type="password" required placeholder="Введите пароль" v-model="password"> 
 
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Отменить</button>
-      <span class="psw">Забыли <a href="#">пароль?</a></span>
+      <button type="submit" @click="submitEntry()">Войти</button>
     </div>
   </form>
 </div>
-    </div>
+
 </template>
 
+
+
+
+
 <script>
+import axios from 'axios'
 
 export default{
     name: 'Authorization',
-}
+    data(){
+        return{
+            login: "",
+            password: ""
+        }
+    },
+    methods: {
+        submitEntry: function() {
+        this.ajaxRequest = true;
+        this.$http.post('http://10.1.5.65/api/personal/users', {
+            login: this.login,
+            password: this.password,
+          }, {
+            emulateJSON: true  // <-- This was missing
+          }).then(function (data) {  // <-- Handle results like this
+            this.postResults = data;
+            this.ajaxRequest = false;
+          });
+      }}
+    }
+    // mounted() {
+    //     axios
+    //     .post('http://10.1.5.65/api/personal/users',{ params: { login: this.login, password: this.password}})
+    //     .then(response => this.responseData = response.data)
+    //     .catch(error => {})
+    //     }
+
 
 </script>
 
@@ -51,7 +67,6 @@ input[type=text], input[type=password] {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
-
 button {
     background-color: #4CAF50;
     color: white;
@@ -61,7 +76,6 @@ button {
     cursor: pointer;
     width: 100%;
 }
-
 button:hover {
     opacity: 0.8;
 }
@@ -76,10 +90,6 @@ button:hover {
     position: relative;
 }
 
-img.avatar {
-    width: 40%;
-    border-radius: 50%;
-}
 .container {
     padding: 16px;
 }
