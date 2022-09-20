@@ -1,7 +1,8 @@
 <template>
 
 <div id="id01" class="modal" style="display:block">
-  <form class="modal-content animate" action="/">
+
+  <form class="modal-content animate" method="post" action="/" @submit.prevent="submitEntry">
     <div class="container">
 
       <label for="uname"><b>Логин</b></label>
@@ -10,7 +11,7 @@
       <label for="psw"><b>Пароль</b></label>
       <input type="password" required placeholder="Введите пароль" v-model="password"> 
 
-      <button type="submit" @click="submitEntry()">Войти</button>
+      <button type="submit" >Войти</button>
     </div>
   </form>
 </div>
@@ -21,40 +22,50 @@
 
 
 
-<script>
-import axios from 'axios'
-
+<!-- <script>
 export default{
     name: 'Authorization',
     data(){
         return{
-            login: "",
-            password: ""
+            login: "a.reshetilo@tehtrans.com",
+            password: "Tehtrans2022"
         }
     },
     methods: {
-        submitEntry: function() {
-        this.ajaxRequest = true;
-        this.$http.post('http://10.1.5.65/api/personal/users', {
-            login: this.login,
-            password: this.password,
-          }, {
-            emulateJSON: true  // <-- This was missing
-          }).then(function (data) {  // <-- Handle results like this
-            this.postResults = data;
-            this.ajaxRequest = false;
-          });
-      }}
+        submitEntry: function(event) {
+            event.preventDefault()
+
+            fetch("http://10.1.5.65/api/personal/login/", {
+            method: "post",
+            mode: 'cors',
+            headers: {
+                'Accept': '*/*',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                'email': this.login,
+                'password': this.password
+            })
+            })
+
+            .then((response) => {
+                if (response.ok){
+                    return response.json().then((data)=>{
+                        console.log(data);
+               })
+           }
+           else{
+               console.log('NOT OK')
+           }
+       })
+ 
+        }
     }
-    // mounted() {
-    //     axios
-    //     .post('http://10.1.5.65/api/personal/users',{ params: { login: this.login, password: this.password}})
-    //     .then(response => this.responseData = response.data)
-    //     .catch(error => {})
-    //     }
+}
 
 
-</script>
+
+</script> -->
 
 
 <style>

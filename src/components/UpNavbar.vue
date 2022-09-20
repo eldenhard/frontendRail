@@ -21,6 +21,9 @@
     <li class="UpNavList-item">
         <router-link to="/rates" >Ставки</router-link>
     </li>
+    <li class="UpNavList-item">
+        <router-link to="/lk" >Личный кабинет</router-link>
+    </li>
 
 
 </ul>

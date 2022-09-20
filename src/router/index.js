@@ -8,6 +8,7 @@ import presentation from '@/components/Presentation';
 import rates from '@/components/Rates';
 import authorization from '@/components/Authorization';
 import Bookkeeping from '@/components/Bookkeeping';
+import lk from '@/components/lk'
 
 
 Vue.use(Router)
@@ -44,6 +45,11 @@ export default new Router({
     path: '/bookkeeping',
     name: 'bookkeeping',
     component: Bookkeeping
+    },
+    {
+    path: '/lk',
+    name: 'lk',
+    component: lk
     },
    {
     path: '*',
