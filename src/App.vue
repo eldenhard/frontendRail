@@ -1,17 +1,14 @@
 <template>
-<div>
+  <div>
     <UpNavbar/>
     <!-- <Navbar/> -->
     <router-view/>
-
-  
-</div>
+  </div>
 </template>
 
 <script>
 import UpNavbar from './components/UpNavbar.vue';
 // import Navbar from './components/Navbar.vue'
-
 
 export default {
   name: 'App',
@@ -19,9 +16,7 @@ export default {
 }
 </script>
 
-
 <style>
 @import './style/style.css';
-
 </style>
 

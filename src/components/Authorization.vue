@@ -22,50 +22,7 @@
 
 
 
-<!-- <script>
-export default{
-    name: 'Authorization',
-    data(){
-        return{
-            login: "a.reshetilo@tehtrans.com",
-            password: "Tehtrans2022"
-        }
-    },
-    methods: {
-        submitEntry: function(event) {
-            event.preventDefault()
-
-            fetch("http://10.1.5.65/api/personal/login/", {
-            method: "post",
-            mode: 'cors',
-            headers: {
-                'Accept': '*/*',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                'email': this.login,
-                'password': this.password
-            })
-            })
-
-            .then((response) => {
-                if (response.ok){
-                    return response.json().then((data)=>{
-                        console.log(data);
-               })
-           }
-           else{
-               console.log('NOT OK')
-           }
-       })
- 
-        }
-    }
-}
-
-
-
-</script> -->
+<!-- я -->
 
 
 <style>
