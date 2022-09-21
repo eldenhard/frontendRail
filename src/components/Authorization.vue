@@ -1,5 +1,5 @@
 <template>
-  <div id="id01" class="modal" :style="{'display': user.email ? 'none' : 'block'}">
+  <div id="id01" class="modal" :style="{'display': user.token ? 'none' : 'block'}">
     <div class="modal-content animate">
       <div class="container">
         <label for="uname"><b>Логин</b></label>
