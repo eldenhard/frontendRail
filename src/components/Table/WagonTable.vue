@@ -482,37 +482,8 @@ export default{
 
            },
            
-           WagonsModel:[
-           { 'number': 1,
-            'is_problem': 2,
-            'features': 'Дырка',
-            'volume': 50,
-            'tare': 'Контейнер',
-            'type': 'Платформа'
-            },
-            {   'number': 2,
-                'is_problem': 31,
-                'features': 'Прострел',
-                'volume': 501,
-                'tare': 'Крытый вагон',
-                'type': 'Платформа2'
-            },
-            {   'number': 3,
-                'is_problem': 31,
-                'features': 'Сломан',
-                'volume': 501,
-                'tare': 'Полувагон',
-                'type': 'Платформа2'
-            },
-            {   'number': 4,
-                'is_problem': 31,
-                'features': 'Взорван',
-                'volume': 501,
-                'tare': 'Хоппер',
-                'type': 'Платформа2'
-            }
+           WagonsModel:[],
 
-           ],
            WagonStatesModel: [
            {
             'number': 1,
@@ -701,7 +672,17 @@ export default{
            }]
 
         }
-    }
+    },
+    async mounted() {
+    
+    let lk = await fetch('http://10.1.5.65/api/personal/users/', {
+        headers: {
+            'Authorization': 'Basic YS5yZXNoZXRpbG9AdGVodHJhbnMuY29tOlRlaHRyYW5zMjAyMg=='
+        }
+    });
+    let wagonsmodel = await lk.json();
+    this.wagonsmodel = wagonsmodel
+}
 }
    
         

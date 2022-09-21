@@ -7,7 +7,8 @@
 
 <style>
  .lk h2{
-text-align: center;
+    text-align: center;
+    padding-top: 2%;
 }
 </style>
 
@@ -22,9 +23,12 @@ data(){
     }
 },
 async mounted() {
-    const token = 'YS5yZXNoZXRpbG9AdGVodHJhbnMuY29tOlRlaHRyYW5zMjAyMg=='
-    console.log('token')
-    let lk = await fetch('http://10.1.5.65/api/personal/users/');
+    
+    let lk = await fetch('http://10.1.5.65/api/personal/users/', {
+        headers: {
+            'Authorization': 'Basic YS5yZXNoZXRpbG9AdGVodHJhbnMuY29tOlRlaHRyYW5zMjAyMg=='
+        }
+    });
     let posts = await lk.json();
     this.posts = posts
 },
