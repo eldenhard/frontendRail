@@ -1,28 +1,66 @@
 <template>
-
-<div id="id01" class="modal" style="display:block">
-
-  <form class="modal-content animate" method="post" action="/" @submit.prevent="submitEntry">
-    <div class="container">
-
-      <label for="uname"><b>Логин</b></label>
-      <input type="text" required placeholder="Введите логин" v-model="login">
-
-      <label for="psw"><b>Пароль</b></label>
-      <input type="password" required placeholder="Введите пароль" v-model="password"> 
-
-      <button type="submit" >Войти</button>
+    <div id="id01" class="modal" style="display:block">
+      <form class="modal-content animate" @submit.prevent="submitEntry">
+        <div class="container">
+          Пользователь: {{user}}
+          <label for="uname"><b>Логин</b></label>
+          <input type="text" required placeholder="Введите логин" v-model="email">
+  
+          <label for="psw"><b>Пароль</b></label>
+          <input type="password" required placeholder="Введите пароль" v-model="password">
+  
+          <button type="submit">Войти</button>
+        </div>
+      </form>
     </div>
-  </form>
-</div>
-
-</template>
+  </template>
 
 
 
+<script>
+import axios from "axios";
+import {mapState} from "vuex";
+    export default {
+      name: 'Authorization',
+      data() {
+        return {
+          email: "",
+          password: ""
+        }
+      },
+      methods: {
+        submitEntry: function (event) {
+            event.preventDefault()
+          const api = "http://10.1.5.65/api/personal/login/"
+          axios
+          .post(api, {
+            'email': this.email,
+            'password': this.password,
+          })
+          .then(resp => {
+    
+            // if (resp.ok){
+                return resp.json().then((data)=>{
+                    console.log(data);
+               })
+        //    }
+        //    else{
+        //     console.log('NOT HEHEHE')
+        //    }
+          })
+          return false
+        }
+      },
+      computed: {
+        ...mapState({
+          user: state => state.user
+        })
+      }
+    }
+    </script>
+    
 
 
-<!-- я -->
 
 
 <style>
