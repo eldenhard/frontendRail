@@ -36,11 +36,10 @@ import {mapState} from "vuex";
           })
           .then(resp => {
     
-            // if (resp.ok){
                 return resp.json().then((data)=>{
                     console.log(data);
                })
-        //    }
+           
         //    else{
         //     console.log('NOT HEHEHE')
         //    }
