@@ -3,16 +3,17 @@
     <UpNavbar/>
     <!-- <Navbar/> -->
     <router-view/>
+    <Authorization></Authorization>
   </div>
 </template>
 
 <script>
 import UpNavbar from './components/UpNavbar.vue';
-// import Navbar from './components/Navbar.vue'
+import Authorization from './components/Authorization.vue'
 
 export default {
   name: 'App',
-  components: {UpNavbar}
+  components: {UpNavbar, Authorization}
 }
 </script>
 

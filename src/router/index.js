@@ -47,6 +47,11 @@ export default new Router({
       component: Bookkeeping
     },
     {
+      path: '/lk',
+      name: 'lk',
+      component: lk
+    },
+    {
       path: '*',
       name: 'errorPage',
       component: errorPage

@@ -20,9 +20,12 @@
         <li class="UpNavList-item">
           <router-link to="/rates">Ставки</router-link>
         </li>
-<!--        <li class="UpNavList-item">-->
-<!--          <a href="#" @click="logout">Выход</a>-->
-<!--        </li>-->
+        <li class="UpNavList-item">
+          <router-link to="/lk">Личный кабинет</router-link>
+        </li>
+        <li class="UpNavList-item">
+          <a href="#" @click="logout">Выход</a>
+        </li>
       </ul>
     </div>
   </div>
