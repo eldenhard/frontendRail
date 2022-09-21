@@ -1,20 +1,18 @@
 <template>
-    <div id="id01" class="modal" style="display:block">
-      <form class="modal-content animate" @submit.prevent="submitEntry">
-        <div class="container">
-          Пользователь: {{user}}
-          <label for="uname"><b>Логин</b></label>
-          <input type="text" required placeholder="Введите логин" v-model="email">
-  
-          <label for="psw"><b>Пароль</b></label>
-          <input type="password" required placeholder="Введите пароль" v-model="password">
-  
-          <button type="submit">Войти</button>
-        </div>
-      </form>
-    </div>
-  </template>
+  <div id="id01" class="modal" :style="{'display': user.email ? 'none' : 'block'}">
+    <div class="modal-content animate">
+      <div class="container">
+        <label for="uname"><b>Логин</b></label>
+        <input type="text" required placeholder="Введите логин" v-model="email">
 
+        <label for="psw"><b>Пароль</b></label>
+        <input type="password" required placeholder="Введите пароль" v-model="password">
+
+        <button @click="submitEntry()">Войти</button>
+      </div>
+    </div>
+  </div>
+</template>
 
 
 <script>
@@ -29,8 +27,7 @@ import {mapState} from "vuex";
         }
       },
       methods: {
-        submitEntry: function (event) {
-            event.preventDefault()
+        submitEntry: function () {
           const api = "http://10.1.5.65/api/personal/login/"
           axios
           .post(api, {

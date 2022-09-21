@@ -32,29 +32,24 @@ export default new Router({
       component: home
     },
     {
-    path: '/presentation',
-    name: 'presentation',
-    component: presentation
+      path: '/presentation',
+      name: 'presentation',
+      component: presentation
     },
     {
-    path: '/rates',
-    name: 'rates',
-    component: rates
+      path: '/rates',
+      name: 'rates',
+      component: rates
     },
     {
-    path: '/bookkeeping',
-    name: 'bookkeeping',
-    component: Bookkeeping
+      path: '/bookkeeping',
+      name: 'bookkeeping',
+      component: Bookkeeping
     },
     {
-    path: '/lk',
-    name: 'lk',
-    component: lk
-    },
-   {
-    path: '*',
-    name: 'errorPage',
-    component: errorPage
-  }
+      path: '*',
+      name: 'errorPage',
+      component: errorPage
+    }
   ]
 })
