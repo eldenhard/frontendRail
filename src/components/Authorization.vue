@@ -18,41 +18,39 @@
 <script>
 import axios from "axios";
 import {mapState} from "vuex";
-    export default {
-      name: 'Authorization',
-      data() {
-        return {
-          email: "",
-          password: ""
-        }
-      },
-      methods: {
-        submitEntry: function () {
-          const api = "http://10.1.5.65/api/personal/login/"
-          axios
-          .post(api, {
-            'email': this.email,
-            'password': this.password,
-          })
-          .then(resp => {
-    
-                return resp.json().then((data)=>{
-                    console.log(data);
-               })
-           
-        //    else{
-        //     console.log('NOT HEHEHE')
-        //    }
-          })
-          return false
-        }
-      },
-      computed: {
-        ...mapState({
-          user: state => state.user
-        })
-      }
+export default {
+  name: 'Authorization',
+  data() {
+    return {
+      email: "",
+      password: ""
     }
+  },
+  methods: {
+    submitEntry: function () {
+      const api = "http://10.1.5.65/api/personal/login/"
+      axios
+      .post(api, {
+          email: this.email,
+          password: this.password,
+        })
+      .then(resp => {
+        let user = resp.data
+        console.log(user)
+           if (user.email) {
+            this.$store.commit('setUser', user)
+           
+          }
+        })
+      return false
+    }
+  },
+  computed: {
+    ...mapState({
+      user: state => state.user
+    })
+  }
+}
     </script>
     
 
