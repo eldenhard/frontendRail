@@ -3,7 +3,7 @@
     <div class="modal-content animate">
       <div class="container">
         <label for="uname"><b>Логин</b></label>
-        <input type="text" required placeholder="Введите логин" v-model="login">
+        <input type="text" required placeholder="Введите логин" v-model="email">
 
         <label for="psw"><b>Пароль</b></label>
         <input type="password" required placeholder="Введите пароль" v-model="password">
@@ -23,17 +23,17 @@ export default {
   name: 'Authorization',
   data() {
     return {
-      login: "",
+      email: "",
       password: ""
     }
   },
   methods: {
     submitEntry: function () {
-      const api = "http://10.1.5.65/api/personal/users"
+      const api = "http://10.1.5.65/api/personal/users/"
       // const api = "https://run.mocky.io/v3/8ce97755-de60-4724-8f4f-c5e41e11145d"
 
       axios.post(api, {
-        login: this.login,
+        email: this.email,
         password: this.password,
       }).then(resp => {
         let user = resp.data
