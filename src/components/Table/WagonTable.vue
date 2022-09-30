@@ -6,20 +6,19 @@
         <tr>
           <th>{{WagonModel.number}}</th>
           <th> {{WagonModel.is_problem}}</th>
-          <th>{{WagonModel.features}}</th>
           <th>{{WagonModel.volume}}</th>
-          <th>{{WagonModel.tare}}</th>
           <th>{{WagonModel.type}}</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="wagon in WagonsModel" :key="wagon.number">
+        <!-- v-for="wagon in WagonsModel" :key="wagon.id" -->
+        <tr v-for="wagon in WagonsModel" :key="wagon.id">
           <td>{{wagon.number}}</td>
-          <td>{{wagon.is_problem}}</td>
-          <td>{{wagon.features}}</td>
-          <td>{{wagon.volume}}</td>
-          <td>{{wagon.tare}}</td>
-          <td>{{wagon.type}}</td>
+          <td>{{wagon}}</td>
+          <td></td>
+          <td>{{}}</td>
+          <td></td>
+          <td></td>
           
        </tr>
 
@@ -380,9 +379,7 @@ export default{
             WagonModel:{
                 number: 'Номер вагона',
                 is_problem : 'Проблемность',
-                features : 'Особенности модели вагона',
                 volume: 'Объем вагона',
-                tare: 'Тара вагона',
                 type: 'Тип вагона'
             },
             WagonStateModel:{
@@ -482,37 +479,8 @@ export default{
 
            },
            
-           WagonsModel:[
-           { 'number': 1,
-            'is_problem': 2,
-            'features': 'Дырка',
-            'volume': 50,
-            'tare': 'Контейнер',
-            'type': 'Платформа'
-            },
-            {   'number': 2,
-                'is_problem': 31,
-                'features': 'Прострел',
-                'volume': 501,
-                'tare': 'Крытый вагон',
-                'type': 'Платформа2'
-            },
-            {   'number': 3,
-                'is_problem': 31,
-                'features': 'Сломан',
-                'volume': 501,
-                'tare': 'Полувагон',
-                'type': 'Платформа2'
-            },
-            {   'number': 4,
-                'is_problem': 31,
-                'features': 'Взорван',
-                'volume': 501,
-                'tare': 'Хоппер',
-                'type': 'Платформа2'
-            }
+           WagonsModel:[],
 
-           ],
            WagonStatesModel: [
            {
             'number': 1,
@@ -701,7 +669,33 @@ export default{
            }]
 
         }
-    }
+    },
+   mounted() {
+    
+     fetch('http://10.1.5.65/api/wagon-park/wagon/', {
+        headers: {
+            'Authorization': 'Basic YS5yZXNoZXRpbG9AdGVodHJhbnMuY29tOlRlaHRyYW5zMjAyMg=='
+        },
+        method: 'GET'
+    })
+    .then((response) => {
+                if (response.ok){
+                    return response.json().then(r=>{
+                        //console.log(data);
+                        // 1-е это сваойство Respone, второе свойство JSON
+                        this.WagonsModel = r.data;
+                        console.log(this.WagonsModel)
+               })
+           }
+           else{
+               console.log('NOT OK')
+           }
+       })
+    // let wagonsmodel = await lk.json();
+    // this.WagonsModel = wagonsmodel
+    // console.log(wagonsmodel)
+    
+}
 }
    
         
