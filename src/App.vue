@@ -3,7 +3,7 @@
     <UpNavbar/>
     <!-- <Navbar/> -->
     <router-view/>
-    <Authorization></Authorization>
+    <!-- <Authorization></Authorization> -->
   </div>
 </template>
 

@@ -14,9 +14,9 @@
         <!-- v-for="wagon in WagonsModel" :key="wagon.id" -->
         <tr v-for="wagon in WagonsModel" :key="wagon.id">
           <td>{{wagon.number}}</td>
-          <td>{{wagon}}</td>
-          <td></td>
+          <td>{{wagon.is_problem}}</td>
           <td>{{}}</td>
+          <td>{{wagon.wagon_type}}</td>
           <td></td>
           <td></td>
           
@@ -671,8 +671,7 @@ export default{
         }
     },
    mounted() {
-    
-     fetch('http://10.1.5.65/api/wagon-park/wagon/', {
+     fetch('http://10.1.5.65/api/wagon-park/wagons/', {
         headers: {
             'Authorization': 'Basic YS5yZXNoZXRpbG9AdGVodHJhbnMuY29tOlRlaHRyYW5zMjAyMg=='
         },
@@ -691,9 +690,10 @@ export default{
                console.log('NOT OK')
            }
        })
-    // let wagonsmodel = await lk.json();
-    // this.WagonsModel = wagonsmodel
-    // console.log(wagonsmodel)
+  
+    
+},
+methods: {
     
 }
 }

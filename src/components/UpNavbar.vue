@@ -46,8 +46,7 @@ export default {
 <style scoped>
 /* Выделение активной ссылки */
 a.router-link-active, li.router-link-active {
-  padding-bottom: 9px;
-  border-bottom: 2px solid #ED5E68;
+border-bottom: 2px solid #EC2332;
 
 
 }
