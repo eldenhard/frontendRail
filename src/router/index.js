@@ -2,13 +2,13 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import home from '@/components/Home';
 import wagonpark from '@/components/WagonPark'
-// import { component } from 'vue/types/umd';
 import errorPage from '@/404folder/errorPage';
 import presentation from '@/components/Presentation';
 import rates from '@/components/Rates';
 import authorization from '@/components/Authorization';
 import Bookkeeping from '@/components/Bookkeeping';
-import lk from '@/components/lk'
+import lk from '@/components/lk';
+import report from '@/components/report';
 
 
 Vue.use(Router)
@@ -50,6 +50,11 @@ export default new Router({
       path: '/lk',
       name: 'lk',
       component: lk
+    },
+    {
+      path: '/report',
+      name: 'report',
+      component: report
     },
     {
       path: '*',

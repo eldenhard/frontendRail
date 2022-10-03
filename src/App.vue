@@ -10,7 +10,6 @@
 <script>
 import UpNavbar from './components/UpNavbar.vue';
 import Authorization from './components/Authorization.vue'
-
 export default {
   name: 'App',
   components: {UpNavbar, Authorization}

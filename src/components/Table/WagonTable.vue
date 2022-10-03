@@ -29,7 +29,7 @@
 
 <b-card no-body style="background: #ECECEC; border: none; text-decoration: none; width: 100%;">
     <b-tabs card  style="background: #ECECEC;"  small card>
-        <b-tab title="Состояние" active style="color: black;" :click="WagonType()">
+        <b-tab title="Состояние" active style="color: black;" >
                 <b-card-text style="margin-top: -30px;">
                 <div style="width:100%; overflow: auto;">
                 <table>
@@ -56,7 +56,7 @@
                 </div>       
             </b-card-text>
         </b-tab>
-        <b-tab title="Тип">
+        <b-tab title="Тип" :click="WagonType()">
                 <b-card-text style="margin-top: -30px;">
                     <div style="width:100%; overflow: auto; ">
                     <table>
@@ -561,9 +561,11 @@ export default{
     },
 
 mounted(){
+    const pretoken = JSON.parse(localStorage.getItem("vuex"))
+    const token = pretoken.user.token
     fetch('http://10.1.5.65/api/wagon-park/wagons/', {
         headers: {
-            'Authorization': 'Basic YS5yZXNoZXRpbG9AdGVodHJhbnMuY29tOlRlaHRyYW5zMjAyMg==',
+            'Authorization': `Basic ${token}` 
         },
         method: 'GET'
     })
@@ -582,17 +584,19 @@ mounted(){
        })
 },
 methods: {
-    WagonType : function(){
+    WagonType(){
+        const pretoken = JSON.parse(localStorage.getItem("vuex"))
+        const token = pretoken.user.token
         fetch('http://10.1.5.65/api/wagon-park/wagon-type/', {
         headers: {
-            'Authorization': 'Basic YS5yZXNoZXRpbG9AdGVodHJhbnMuY29tOlRlaHRyYW5zMjAyMg==',
+            'Authorization': `Basic ${token}` 
         },
         method: 'GET'
     })
     .then((response) => {
                 if (response.ok){
                     return response.json().then(r=>{
-                        this.WagonsType = data.data;
+                        this.WagonsType = r.data;
                         console.log(this.WagonsType)
                })
            }
@@ -601,10 +605,12 @@ methods: {
            }
        })
     },
-    passport : function(){
+    passport(){
+    const pretoken = JSON.parse(localStorage.getItem("vuex"))
+    const token = pretoken.user.token
         fetch('http://10.1.5.65/api/wagon-park/wagon-passport/', {
         headers: {
-            'Authorization': 'Basic YS5yZXNoZXRpbG9AdGVodHJhbnMuY29tOlRlaHRyYW5zMjAyMg==',
+            'Authorization': `Basic ${token}` 
         },
         method: 'GET'
     })
@@ -620,10 +626,12 @@ methods: {
            }
        })
     },
-    arenda : function() {
+    arenda() {
+    const pretoken = JSON.parse(localStorage.getItem("vuex"))
+    const token = pretoken.user.token
         fetch('http://10.1.5.65/api/wagon-park/wagon-rent/', {
         headers: {
-            'Authorization': 'Basic YS5yZXNoZXRpbG9AdGVodHJhbnMuY29tOlRlaHRyYW5zMjAyMg==',
+            'Authorization': `Basic ${token}` 
         },
         method: 'GET'
     })
@@ -639,10 +647,12 @@ methods: {
            }
        })
     },
-    belong: function(){
+    belong(){
+    const pretoken = JSON.parse(localStorage.getItem("vuex"))
+    const token = pretoken.user.token
         fetch('http://10.1.5.65/api/wagon-park/wagon-belong/', {
         headers: {
-            'Authorization': 'Basic YS5yZXNoZXRpbG9AdGVodHJhbnMuY29tOlRlaHRyYW5zMjAyMg==',
+            'Authorization': `Basic ${token}` 
         },
         method: 'GET'
     })

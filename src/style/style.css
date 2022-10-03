@@ -95,3 +95,7 @@ tr,td,th{
 .table1 table td:not(.wrap) {
   white-space: nowrap !important;
 }
+h2 {
+  text-align: center;
+  padding-top: 2%;
+}

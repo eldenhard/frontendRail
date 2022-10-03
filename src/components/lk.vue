@@ -129,10 +129,79 @@
 
     </form>
     
+
+    <section id="loading-page-lk" style="display:none">
+
+<svg version="1.1" id="L7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+  viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+ <path fill="#C04945" d="M31.6,3.5C5.9,13.6-6.6,42.7,3.5,68.4c10.1,25.7,39.2,38.3,64.9,28.1l-3.1-7.9c-21.3,8.4-45.4-2-53.8-23.3
+  c-8.4-21.3,2-45.4,23.3-53.8L31.6,3.5z">
+      <animateTransform 
+         attributeName="transform" 
+         attributeType="XML" 
+         type="rotate"
+         dur="2s" 
+         from="0 50 50"
+         to="360 50 50" 
+         repeatCount="indefinite" />
+  </path>
+ <path fill="#ECECEC" d="M42.3,39.6c5.7-4.3,13.9-3.1,18.1,2.7c4.3,5.7,3.1,13.9-2.7,18.1l4.1,5.5c8.8-6.5,10.6-19,4.1-27.7
+  c-6.5-8.8-19-10.6-27.7-4.1L42.3,39.6z">
+      <animateTransform 
+         attributeName="transform" 
+         attributeType="XML" 
+         type="rotate"
+         dur="1s" 
+         from="0 50 50"
+         to="-360 50 50" 
+         repeatCount="indefinite" />
+  </path>
+ <path fill="#3D70A8" d="M82,35.7C74.1,18,53.4,10.1,35.7,18S10.1,46.6,18,64.3l7.6-3.4c-6-13.5,0-29.3,13.5-35.3s29.3,0,35.3,13.5
+  L82,35.7z">
+      <animateTransform 
+         attributeName="transform" 
+         attributeType="XML" 
+         type="rotate"
+         dur="2s" 
+         from="0 50 50"
+         to="360 50 50" 
+         repeatCount="indefinite" />
+  </path>
+</svg>
+  
+  </section>
+
+
+
     </div>
 </template>
 
 <style>
+#loading-page-lk {
+  width: 100vw;
+  height: 100vh;
+  background: rgb(17, 17, 17, 0.1);
+  display: flex;
+  position: fixed;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999999999999;
+}
+#loading-page-lk svg {
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%,0);
+  margin-top: 15%;
+
+}
+
+
 #block-answer{
     border-radius: 2px;
 background: #ffffff;
@@ -198,13 +267,7 @@ box-shadow:  10px 10px 30px #d0d0d0,
 
 
 <script>
-
-
-
-
-// import {mapState} from "vuex";
-
-
+import {mapState} from "vuex";
 export default{
 name: 'lk',
 data(){
@@ -220,9 +283,12 @@ data(){
     }
 },
 mounted(){
+    const pretoken = JSON.parse(localStorage.getItem("vuex"))
+    const token = pretoken.user.token
+
        fetch('http://10.1.5.65/api/personal/users/', {
         headers: {
-            'Authorization': 'Basic YS5yZXNoZXRpbG9AdGVodHJhbnMuY29tOlRlaHRyYW5zMjAyMg=='
+            'Authorization': `Basic ${token}` 
         },
         method: 'GET'
     })
@@ -242,13 +308,16 @@ mounted(){
 methods: {  
  Send(){
     event.preventDefault()
+    const pretoken = JSON.parse(localStorage.getItem("vuex"))
+    const token = pretoken.user.token
+    document.getElementById('loading-page-lk').style.display = 'block'
    let admin = document.getElementById('admin').value.split(' ')[0] 
    let staff = document.getElementById('staff').value.split(' ')[0] 
    fetch('http://10.1.5.65/api/reports/kpi/create/', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        'Authorization': 'Basic di5ib2x0ekB0ZWh0cmFucy5jb206VGVodHJhbnMyMDIy' 
+        'Authorization': `Basic ${token}` 
     },
     body: JSON.stringify({
     "employee": staff,
@@ -269,6 +338,7 @@ methods: {
         if (response.ok){
             return response.json().then((data)=>{
                 console.log(data);
+                document.getElementById('loading-page-lk').style.display = 'none';
                 alert('Анкета отправлена')
 
             })
@@ -280,11 +350,15 @@ methods: {
         }
     })
  }
-}
+},
+computed: {
+    ...mapState({
+      user: state => state.user
+    })
+  }
 }
 
 </script>
 
 
-</script>
     

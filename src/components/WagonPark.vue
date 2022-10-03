@@ -2,7 +2,6 @@
 <template>
     <div>
         <WagonNavbar :tabs="tabs"  :counter="counter"></WagonNavbar>
-  
         <p class="infoNull" v-if="tabs.length === 0">Вы не выбрали ещё ни одной таблицы</p>
         <div>
             <b-card no-body class="leftTable">
