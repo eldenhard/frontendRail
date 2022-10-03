@@ -9,15 +9,19 @@
           <th> {{WagonModel.is_problem}}</th>
           <th>{{WagonModel.volume}}</th>
           <th>{{WagonModel.type}}</th>
+          <th>Актуальность</th>
         </tr>
       </thead>
       <tbody>
         <!-- v-for="wagon in WagonsModel" :key="wagon.id" -->
         <tr v-for="wagon in WagonsModel" :key="wagon.id">
           <td>{{wagon.number}}</td>
-          <td>{{wagon.is_problem}}</td>
-          <td>{{}}</td>
+          <td v-if="wagon.is_problem == false">нет</td>
+          <td v-else>да</td>
+          <td>{{wagon.volume}}</td>
           <td>{{wagon.wagon_type}}</td>
+          <td v-if="wagon.is_active = true">☑️</td>
+          <td v-else>🚫</td>
           
        </tr>
 
@@ -29,7 +33,7 @@
 
 <b-card no-body style="background: #ECECEC; border: none; text-decoration: none; width: 100%;">
     <b-tabs card  style="background: #ECECEC;"  small card>
-        <b-tab title="Состояние" active style="color: black;" >
+        <!-- <b-tab title="Состояние" active style="color: black;" >
                 <b-card-text style="margin-top: -30px;">
                 <div style="width:100%; overflow: auto;">
                 <table>
@@ -55,40 +59,26 @@
                     </table>  
                 </div>       
             </b-card-text>
-        </b-tab>
+        </b-tab> -->
         <b-tab title="Тип" :click="WagonType()">
                 <b-card-text style="margin-top: -30px;">
                     <div style="width:100%; overflow: auto; ">
                     <table>
                         <thead>
                             <tr>
-                            <th>{{WagonModel.number}}</th>
                             <th>{{WagonTypeModel.name}}</th>
                             <th>{{WagonTypeModel.short_name}}</th>
                             <th>{{WagonTypeModel.in_use}}</th>
-                            <!-- <th>{{WagonTypeModel.name_rp}}</th>
-                            <th>{{WagonTypeModel.foot_length}}</th>
-                            <th>{{WagonTypeModel.code_ustng_empty}}</th>
-                            <th>{{WagonTypeModel.code_gng_empty}}</th>
-                            <th>{{WagonTypeModel.code_etsng_empty_repair}}</th>
-                            <th>{{WagonTypeModel.trf_code}}</th>
-                            <th>{{WagonTypeModel.rtf_equal_container_code}}</th> -->
+
 
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for=" wagontype in WagonsType" :key="wagontype.id">
-                                <td>{{wagontype.id}}</td>
+                            <tr v-for=" wagontype in WagonsType" :key="wagontype.id" >
                                 <td>{{wagontype.name}}</td>
                                 <td>{{wagontype.short_name}}</td>
-                                <td>{{wagontype.in_use}}</td>
-                                <!-- <td class="wrap">{{wagon.name_rp}}</td>
-                                <td>{{wagon.foot_length}}</td>
-                                <td>{{wagon.code_ustng_empty}}</td>
-                                <td>{{wagon.code_gng_empty}}</td>
-                                <td>{{wagon.code_etsng_empty_repair}}</td>
-                                <td>{{wagon.trf_code}}</td>
-                                <td>{{wagon.rtf_equal_container_code}}</td> -->
+                                <td v-if="wagontype.in_use = true">☑️</td>
+                                <td v-else>🚫</td>
                             </tr>
                         
                         </tbody>
@@ -190,19 +180,7 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td>{{WagonModel.number}}</td>
-                            <td>{{WagonRepairModel.nrp}}</td>
-                            <td>{{WagonRepairModel.malfunction_current}}</td>
-                            <td>{{WagonRepairModel.repair_type}}</td>
-                            <td>{{WagonRepairModel.nrp_date}}</td>
-                            <td>{{WagonRepairModel.repair_kind}}</td>
-                            <td>{{WagonRepairModel.next_planed_repair_date}}</td>
-                            <td>{{WagonRepairModel.next_planed_repair_depot}}</td>
-                            <td>{{WagonRepairModel.status}}</td>
-                            <td>{{WagonRepairModel.repair_station_downtime}}</td>
-                            <td>{{WagonRepairModel.malfunction_code}}</td>
-                            <td>{{WagonRepairModel.malfunction_kind}}</td>
-                            <td>{{WagonRepairModel.repair_compensation}}</td>
+                       
 
                         </tr>
                         </tbody>
@@ -488,73 +466,16 @@ export default{
            
            WagonsModel:[],
            WagonsType:[],
-           WagonStatesModel: [
-           {
-            'number': 1,
-            'state': 'Плохое',
-            'state_value': '12',
-            'state_value_digital': '12',
-            'updated_at': Date.now()
-           },
-           {
-           'number': 2,
-            'state': 'Хорошее',
-            'state_value': '2',
-            'state_value_digital': '17',
-            'updated_at': Date.now()
-           }
-           ],
-          
+           WagonStatesModel: [],
            WagonsPassportModel: [],
-
            WagonsBelongModel: [],
            WagonsRepairModel: [],
-           WagonsRestRunModel: [
-            {
-                'number': 1,
-                'actual_run': '123',
-                'rest_run': '12',
-                'run_limit': '10000',
-                'run_over_limit': '23'
-            },
-            {
-                'number': 2,
-                'actual_run': '123',
-                'rest_run': '12',
-                'run_limit': '10000',
-                'run_over_limit': '23'
-            }
-           ],
-           WagonsModernisationModel: [
-            {
-                'number': 1,
-                'last_date': '20.03.2022'
-            }
-           ],
+           WagonsRestRunModel: [],
+           WagonsModernisationModel: [],
            WagonsRentModel: [],
-           WagonsLeasingModel: [
-            {
-                'number': 1,
-                'leasing_doc': 'Договор ',
-                'leasing_doc_lifetime': '15.02.2023',
-
-            }
-           ],
-           WagonsInsuranceModel: [{
-            'number':1,
-            'insurance_doc': 'Договор',
-            'insurance_doc_lifetime': '30.02.2023'
-
-           }],
-           WagonsEtranInfoModel: [{
-            'number': 1,
-            'owner': 'Иванов',
-            'tenant': 'Петров',
-            'signing': 'Визирование +',
-            'parking': '-',
-            'telegram_number': '123',
-            'number_from_expeditor': '321'
-           }],
+           WagonsLeasingModel: [],
+           WagonsInsuranceModel: [],
+           WagonsEtranInfoModel: [],
 
 
         }
@@ -563,7 +484,7 @@ export default{
 mounted(){
     const pretoken = JSON.parse(localStorage.getItem("vuex"))
     const token = pretoken.user.token
-    fetch('http://10.1.5.65/api/wagon-park/wagons/', {
+    fetch('http://10.1.5.65/api/wagon-park/wagons?is_active=True', {
         headers: {
             'Authorization': `Basic ${token}` 
         },
@@ -596,7 +517,7 @@ methods: {
     .then((response) => {
                 if (response.ok){
                     return response.json().then(r=>{
-                        this.WagonsType = r.data;
+                        this.WagonsType = r.data.data;
                         console.log(this.WagonsType)
                })
            }
@@ -617,7 +538,7 @@ methods: {
     .then((response) => {
                 if (response.ok){
                     return response.json().then(r=>{
-                        this.WagonsPassportModel = r.data;
+                        this.WagonsPassportModel = r.data.data;
                         console.log(this.WagonsPassportModel)
                })
            }
@@ -659,7 +580,7 @@ methods: {
     .then((response) => {
                 if (response.ok){
                     return response.json().then(r=>{
-                        this.WagonsBelongModel = r.data;
+                        this.WagonsBelongModel = r.data.data;
                         console.log(this.WagonsBelongModel)
                })
            }

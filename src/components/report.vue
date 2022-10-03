@@ -1,12 +1,32 @@
 <template>
     <div>
     <h2>Отчеты</h2>
+    <br><br>
+    <table style="position: relative; left:50%; transform: translate(-50%,0); width: 90%;" class="table1">
+        <thead style="border-bottom: 2px solid #C04945; background:#EEEEEE">
+            <tr>
+                <th>Имя менеджера</th>
+                <th>Фамилия менеджера</th>
     
-    <ul v-for="report in all_reports" :key="report">
-        <li>
-            <a href="" download target="_blank">{{report}}</a>
-        </li>
-    </ul>
+                <th>Имя сотрудника</th>
+                <th>Фамилия сотрудника</th>
+  
+                <th>Создатель</th>
+                <th>Файл</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr  v-for="report in all_reports" :key="report.id">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><a download target="_blank" :href="report.file" v-if="report.file"><img src="../assets/excel.png" alt="" width="30%"></a></td>
+        </tr>
+        </tbody>
+    </table>
+
 
 
 <section id="loading-page-report" style="display:none">
@@ -66,7 +86,7 @@ export default {
     const token = pretoken.user.token
     document.getElementById('loading-page-report').style.display = 'block'
 
-       fetch('http://10.1.5.65/api/personal/users/', {
+       fetch('http://10.1.5.65/api/reports/kpi/', {
         headers: {
             'Authorization': `Basic ${token}` 
         },
@@ -75,7 +95,7 @@ export default {
     .then((response) => {
                 if (response.ok){
                     return response.json().then(r=>{
-                        this.all_reports = r.data;
+                        this.all_reports = r.data.data;
                         document.getElementById('loading-page-report').style.display = 'none'
                         console.log(this.all_reports)
                })
@@ -91,6 +111,10 @@ export default {
 
 
 <style>
+.report-link {
+
+    margin-top: 1%;
+}    
 #loading-page-report {
     width: 100vw;
     height: 100vh;
